@@ -29,3 +29,6 @@ section .jp-state-playing .jp-stop .jp-pause {
   padding: 5px 20px;
 }
 
+.lamixtape {
+  width: 50px;
+}
