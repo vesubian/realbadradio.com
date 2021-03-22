@@ -12,10 +12,10 @@ img {
 section .jp-state-playing .jp-play {
     display: none;
 }
-section .jp-stop {
+section .jp-stop .jp-pause {
     display: none;
 }
-section .jp-state-playing .jp-stop {
+section .jp-state-playing .jp-stop .jp-pause {
  /*   display: initial !important; */
     display: inline-block;
 }
