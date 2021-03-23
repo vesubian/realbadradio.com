@@ -41,3 +41,16 @@ section .jp-state-playing .jp-stop .jp-pause {
 .lamixdiv {
   padding-top: 15%;
 }
+
+@media only screen and (max-width: 768px) {
+  .lamixdiv {
+    padding-top: 25%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .lamixdiv {
+    padding-top: 45%;
+      width: 80%;
+  }
+}
