@@ -30,7 +30,9 @@ section .jp-state-playing .jp-stop {
 }
 
 .lamixtape {
-  height: 50px;
-  filter: invert(100%);
-  -webkit-filter: invert(100%);
+  width: 115px;
+  color: #222;
+  font-weight: bold;
+  padding: 22% 20px 0 0;
+  float: right;
 }
