@@ -51,6 +51,5 @@ section .jp-state-playing .jp-stop .jp-pause {
 @media only screen and (max-width: 600px) {
   .lamixdiv {
     padding-top: 45%;
-      width: 80%;
   }
 }
