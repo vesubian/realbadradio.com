@@ -30,7 +30,7 @@ section .jp-state-playing .jp-stop .jp-pause {
 }
 
 .lamixtape {
-  width: 80%;
+  width: 5rem;
   color: #222;
   font-weight: bold;
   float: right;
@@ -38,25 +38,6 @@ section .jp-state-playing .jp-stop .jp-pause {
   display: block;
 }
 
-.lamix {
-  display: block;
-  float: right;
-  width: 115px;
-  color: #222;
-}
-
 .lamixdiv {
   padding-top: 15%;
-}
-
-@media only screen and (max-width: 768px) {
-  .lamixdiv {
-    padding-top: 25%;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .lamixdiv {
-    padding-top: 45%;
-  }
 }
