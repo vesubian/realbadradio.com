@@ -30,7 +30,7 @@ section .jp-state-playing .jp-stop .jp-pause {
 }
 
 .lamixtape {
-  width: 100px;
+  width: 80%;
   color: #222;
   font-weight: bold;
   float: right;
