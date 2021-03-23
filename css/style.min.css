@@ -46,12 +46,12 @@ section .jp-state-playing .jp-stop {
 }
 
 .lamixdiv {
-  padding-top: 5%;
+  padding-top: 15%;
 }
 
 @media only screen and (max-width: 768px) {
   .lamixdiv {
-    padding-top: 18%;
+    padding-top: 25%;
   }
 }
 
