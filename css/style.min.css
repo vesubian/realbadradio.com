@@ -39,6 +39,7 @@ section .jp-state-playing .jp-stop .jp-pause {
 }
 
 .lamixdiv {
+  display: none;
   padding-top: 15%;
 }
 
