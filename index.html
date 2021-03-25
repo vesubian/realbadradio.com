@@ -16,6 +16,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="css/style.min.css">
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+    <script type="text/javascript"  src="js/radiotitle.js"></script>
 		<script type="text/javascript">
 		//<![CDATA[
 		$(document).ready(function(){
@@ -29,7 +30,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		});
 		//]]>
 		</script>
-
     <title>Real bad radio</title>
     <meta name="title" content="Keep it locked">
 
@@ -82,11 +82,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</div>
 				</div>
         <div class="col-md-3">
-        </div>
+      </div>
 			</div>
       <div class="row bottom">
         <div class="col-md-3"></div>
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
+        <p id="trackid">
+          Current track: <span id="track-title">LIVE</span>
+        </p>
+       </div>
         <div class="col-md-3 lamixdiv">
         <a role="button" tabindex="0" href="https://lamixtape.fr" style="">
           <img class="lamixtape" src="img/lamixtape.png">
@@ -95,5 +99,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 		</section>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function () {
+    setTimeout(function () {radioTitle();}, 2000);
+    // we're going to update our html elements / player every 15 seconds
+    setInterval(function () {radioTitle();}, 5000);
+});
+  </script>
   </body>
 </html>
