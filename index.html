@@ -17,6 +17,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
     <script type="text/javascript"  src="js/radiotitle.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+    setTimeout(function () {radioTitle();}, 2000);
+    // we're going to update our html elements / player every 15 seconds
+    setInterval(function () {radioTitle();}, 5000);
+});
+  </script>
 		<script type="text/javascript">
 		//<![CDATA[
 		$(document).ready(function(){
@@ -99,12 +106,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 		</section>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script>
-    $(document).ready(function () {
-    setTimeout(function () {radioTitle();}, 2000);
-    // we're going to update our html elements / player every 15 seconds
-    setInterval(function () {radioTitle();}, 5000);
-});
-  </script>
   </body>
 </html>
