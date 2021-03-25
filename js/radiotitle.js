@@ -1,4 +1,4 @@
-radiotitle.js
+// radiotitle.js
 
 function radioTitle() {
     // this is the URL of the json.xml file located on your server.
