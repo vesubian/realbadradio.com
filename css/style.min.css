@@ -30,14 +30,10 @@ section .jp-state-playing .jp-stop {
 }
 
 .currenttrack {
-  margin-top: 4rem;
+  margin-top: 3.5rem;
   margin-bottom: 1rem;
   text-align: center;
   color: #686464;
-}
-
-#track-title {
-  font-weight: bold;
 }
 
 .lamixtape {
