@@ -13,7 +13,7 @@ function radioTitle() {
           dataType: 'jsonp',
           success: function (json) {
             // this is the element we're updating that will hold the track title
-            $('#track-title').text(json[mountpoint].artist + ' - ' + json[mountpoint].title);
+            $('#track-title').text(json[mountpoint].title);
             // this is the element we're updating that will hold the listeners count
           //  $('#listeners').text(json[mountpoint].listeners);
         },
