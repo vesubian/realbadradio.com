@@ -15,9 +15,15 @@ function radioTitle() {
             // this is the element we're updating that will hold the track title
             $('#track-title').text(json[mountpoint].title);
             // this is the element we're updating that will hold the listeners count
-          //  $('#listeners').text(json[mountpoint].listeners);
+            // $('#listeners').text(json[mountpoint].listeners);
         },
           error: function (e) {    console.log(e.message);
         }
     });
 }
+
+$(document).ready(function () {
+setTimeout(function () {radioTitle();}, 2000);
+// we're going to update our html elements / player every 15 seconds
+setInterval(function () {radioTitle();}, 5000);
+});
