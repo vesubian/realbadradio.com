@@ -94,6 +94,9 @@ ul.list-unstyled {
   right: 0px;
   max-height: 6rem;
   background-color: #bdc3c726;
+  border-top-width: 1px;
+  border-top-color: #000000b8;
+  border-top-style: groove;
 }
 
 .col-lg-6.col-md-12.mb-4.mb-md-0 {
