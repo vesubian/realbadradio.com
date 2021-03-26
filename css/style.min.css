@@ -30,10 +30,14 @@ section .jp-state-playing .jp-stop {
 }
 
 .currenttrack {
-  margin-top: 3.5rem;
-  margin-bottom: 1rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
   text-align: center;
   color: #686464;
+}
+
+ul.list-unstyled {
+  margin-bottom: 0rem;
 }
 
 .lamixtape {
@@ -54,10 +58,51 @@ section .jp-state-playing .jp-stop {
   .lamixdiv {
     padding-top: 25%;
   }
+  .col-lg-6.col-md-12.mb-4.mb-md-0 {
+      max-width: 100% !important;
+    }
+  .col-lg-3.col-md-6.mb-4.mb-md-0 {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 600px) {
   .lamixdiv {
     padding-top: 45%;
   }
+}
+
+.copyright {
+  display: none;
+}
+
+.footertitles {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.footerfont {
+  font-size: 0.8rem;
+  color: #686464 !important;
+  padding-left: 10px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  max-height: 6rem;
+  background-color: #bdc3c726;
+}
+
+.col-lg-6.col-md-12.mb-4.mb-md-0 {
+  /* max-width: 40%; */
+  margin-bottom: unset !important;
+    max-width: 40%;
+}
+
+.col-lg-3.col-md-6.mb-4.mb-md-0 {
+  margin-bottom: unset !important;
+    max-width: 30%;
 }
