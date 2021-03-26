@@ -62,7 +62,8 @@ ul.list-unstyled {
 
 @media only screen and (max-height: 388px) {
   .img-fluid {
-    height: 50% ;
+    height: 50% !important;
+    width: 50% !important
   }
 }
 
