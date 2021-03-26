@@ -54,6 +54,18 @@ ul.list-unstyled {
   padding-top: 15%;
 }
 
+.img-fluid {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media only screen and (max-height: 388px) {
+  .img-fluid {
+    height: 50% ;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .lamixdiv {
     padding-top: 25%;
