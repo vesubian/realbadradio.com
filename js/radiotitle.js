@@ -16,6 +16,10 @@ function radioTitle() {
             $('#track-title').text(json[mountpoint].title);
             // this is the element we're updating that will hold the listeners count
             // $('#listeners').text(json[mountpoint].listeners);
+            function updateDiscogsLink() {
+              document.getElementById("discogs-link").href = 'https://www.discogs.com/search/?q=' + document.getElementById("track-title").innerHTML;
+            }
+            updateDiscogsLink()
         },
           error: function (e) {    console.log(e.message);
         }

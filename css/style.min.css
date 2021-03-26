@@ -109,3 +109,7 @@ ul.list-unstyled {
   margin-bottom: unset !important;
     max-width: 30%;
 }
+
+#discogs-link {
+  color: unset !important;
+}
