@@ -59,6 +59,7 @@ ul.list-unstyled {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  height: auto;
 }
 
 @media only screen and (max-height: 388px) {
