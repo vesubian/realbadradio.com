@@ -58,14 +58,14 @@ ul.list-unstyled {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
-  height: auto;
+  width: 100% !important;
+  height: auto !important;
 }
 
 @media only screen and (max-height: 388px) {
   .img-fluid {
     height: 50% !important;
-    width: auto;
+    width: auto !important;
   }
 }
 
