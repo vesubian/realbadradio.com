@@ -58,7 +58,8 @@ ul.list-unstyled {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100% !important;
+  width: auto;
+  max-width: 100% !important;
   height: auto !important;
 }
 
