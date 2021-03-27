@@ -20,12 +20,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<script type="text/javascript">
 		//<![CDATA[
 		$(document).ready(function(){
-			$("#jquery_jplayer_1").jPlayer({
+      $("#jquery_jplayer_1").jPlayer({
 				ready: function () {
 					$(this).jPlayer("setMedia", {
 						mp3: "http://realbadradio.ddns.net:21000/mpd.mp3"
-					});
+					})
 				},
+        play: function() {
+          $(this).jPlayer("play", event.jPlayer.status.currentTime);
+        }
 			});
 		});
 		//]]>
