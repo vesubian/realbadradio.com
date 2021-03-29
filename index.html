@@ -9,62 +9,62 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-TMHR5PL');</script>
 <!-- End Google Tag Manager -->
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="css/style.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
-    <script type="text/javascript"  src="js/radiotitle.js"></script>
-    <script>
-    $(window).resize(function() {
-    $(document).ready(function() {
+<link rel="stylesheet" href="css/style.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+<script type="text/javascript"  src="js/radiotitle.js"></script>
+<script>
+$(window).resize(function() {
+$(document).ready(function() {
 
-        var docHeight = $(window).height();
-        var footerHeight = $('#footer').outerHeight();
-        var footerTop = $('#footer').position().top + footerHeight;
+    var docHeight = $(window).height();
+    var footerHeight = $('#footer').outerHeight();
+    var footerTop = $('#footer').position().top + footerHeight;
 
-        if (footerTop < docHeight)
-            $('#footer').css('margin-top', (docHeight - footerTop) + 'px');
-    });});
-    $(window).resize();
-    </script>
+    if (footerTop < docHeight)
+        $('#footer').css('margin-top', (docHeight - footerTop) + 'px');
+});});
+$(window).resize();
+</script>
 
-		<script type="text/javascript">
-		//<![CDATA[
-		$(document).ready(function(){
-      $("#jquery_jplayer_1").jPlayer({
-				ready: function () {
-          ready = true;
-					$(this).jPlayer("setMedia", {
-						mp3: "http://realbadradio.ddns.net:21000/mpd.mp3"
-					})
-				},
-      pause: function() {
-          $(this).jPlayer("clearMedia");
-      },
-      error: function(event) {
-          if(ready && event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
-              // Setup the media stream again and play it.
-              $(this).jPlayer("setMedia", {
-    						mp3: "http://realbadradio.ddns.net:21000/mpd.mp3"
-    					}).jPlayer("play");
-          }
-      },
-      keyEnabled: true,
-      preload: 'none',
-			});
-		});
-		//]]>
-		</script>
-    <title>Real bad radio</title>
-    <meta name="title" content="Keep it locked">
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+  $("#jquery_jplayer_1").jPlayer({
+    ready: function () {
+      ready = true;
+      $(this).jPlayer("setMedia", {
+        mp3: "http://realbadradio.ddns.net:21000/mpd.mp3"
+      })
+    },
+    pause: function() {
+      $(this).jPlayer("clearMedia");
+    },
+    error: function(event) {
+      if(ready && event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
+        // Setup the media stream again and play it.
+        $(this).jPlayer("setMedia", {
+          mp3: "http://realbadradio.ddns.net:21000/mpd.mp3"
+        }).jPlayer("play");
+      }
+    },
+    keyEnabled: true,
+    preload: 'none',
+  });
+});
+//]]>
+</script>
+<title>Real bad radio</title>
+<meta name="title" content="Keep it locked">
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://realbadradio">
-    <meta property="og:title" content="Real bad radio">
-    <meta property="og:image" content="https://realbadradio/img/real-bad-radio.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://realbadradio">
+<meta property="og:title" content="Real bad radio">
+<meta property="og:image" content="https://realbadradio/img/real-bad-radio.png">
 
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
