@@ -22,11 +22,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     $(document).ready(function() {
 
         var docHeight = $(window).height();
-        var footerHeight = $('#footer').height();
+        var footerHeight = $('#footer').outerHeight();
         var footerTop = $('#footer').position().top + footerHeight;
 
         if (footerTop < docHeight)
-            $('#footer').css('margin-top',  (docHeight - footerTop) + 'px');
+            $('#footer').css('margin-top', (docHeight - footerTop) + 'px');
     });});
     $(window).resize();
     </script>
