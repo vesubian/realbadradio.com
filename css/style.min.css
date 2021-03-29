@@ -12,17 +12,10 @@ img {
 section .jp-state-playing .jp-play {
     display: none;
 }
-<<<<<<< HEAD
-section .jp-stop .jp-pause {
-    display: none;
-}
-section .jp-state-playing .jp-stop .jp-pause {
-=======
 section .jp-pause {
     display: none;
 }
 section .jp-state-playing .jp-pause {
->>>>>>> 4cae4fc42ba3ab41d8bd839baab2756311607f8e
  /*   display: initial !important; */
     display: inline-block;
 }
