@@ -58,17 +58,17 @@ ul.list-unstyled {
   .lamixdiv {
     padding-top: 25%;
   }
-  .col-lg-6.col-md-12.mb-4.mb-md-0 {
-      max-width: 100% !important;
-    }
-  .col-lg-3.col-md-6.mb-4.mb-md-0 {
-    display: none;
-  }
 }
 
 @media only screen and (max-width: 600px) {
   .lamixdiv {
     padding-top: 45%;
+  }
+  .col-lg-6.col-md-12.mb-4.mb-md-0 {
+      max-width: 100% !important;
+    }
+  .col-lg-3.col-md-6.mb-4.mb-md-0 {
+    display: none;
   }
 }
 
@@ -112,7 +112,8 @@ ul.list-unstyled {
 
 .col-lg-3.col-md-6.mb-4.mb-md-0 {
   margin-bottom: unset !important;
-    max-width: 30%;
+  max-width: 30%;
+  white-space: nowrap;
 }
 
 #discogs-link {
