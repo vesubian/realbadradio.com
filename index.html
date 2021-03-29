@@ -17,6 +17,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
     <script type="text/javascript"  src="js/radiotitle.js"></script>
+    <script>
+    $(window).resize(function() {
+    $(document).ready(function() {
+
+        var docHeight = $(window).height();
+        var footerHeight = $('#footer').height();
+        var footerTop = $('#footer').position().top + footerHeight;
+
+        if (footerTop < docHeight)
+            $('#footer').css('margin-top',  (docHeight - footerTop) + 'px');
+    });});
+    $(window).resize();
+    </script>
+
 		<script type="text/javascript">
 		//<![CDATA[
 		$(document).ready(function(){
@@ -86,27 +100,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="col-md-3">
       </div>
 			</div>
-      <div class="row bottom">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-       </div>
-        <div class="col-md-3 lamixdiv">
-        <a role="button" tabindex="0" href="https://lamixtape.fr" style="">
-          <img class="lamixtape" src="img/lamixtape.png">
-        </a>
-        </div>
-      </div>
 		</section>
     <!-- Footer -->
-<footer class="bg-light text-center text-lg-start footer">
-  <div class="container p-2">
-    <div class="row" style="margin-bottom: 5px;">
+<footer class="bg-light text-center text-lg-start" id="footer">
+  <div class="container">
+    <div class="row">
       <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <p style="margin-bottom:0">
             <i class="fas fa-music"></i>
             <a id="discogs-link" target="_blank" href="https://www.discogs.com/search/?q=">
             <span id="track-title" class="currenttrack footerfont"></span>
-          </p>
         </a>
       </div>
       <div class="col-lg-3 col-md-6 mb-4 mb-md-0">

@@ -2,7 +2,8 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
 
 body {
- padding-top: 10vh
+ padding-top: 10vh;
+  height: 100%;
 }
 
 img {
@@ -63,13 +64,6 @@ ul.list-unstyled {
   height: auto !important;
 }
 
-@media only screen and (max-height: 388px) {
-  .img-fluid {
-    height: 50% !important;
-    width: auto !important;
-  }
-}
-
 @media only screen and (max-width: 768px) {
   .lamixdiv {
     padding-top: 25%;
@@ -103,22 +97,24 @@ ul.list-unstyled {
   padding-left: 10px;
 }
 
-.footer {
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  max-height: 6rem;
+#footer {
+  position: relative;
+  height: 46px;
   background-color: #bdc3c726;
   border-top-width: 1px;
   border-top-color: #847f7f99;
   border-top-style: groove;
 }
 
+#footer .row {
+  padding: 10px;
+  flex-wrap: unset;
+}
+
 .col-lg-6.col-md-12.mb-4.mb-md-0 {
   /* max-width: 40%; */
   margin-bottom: unset !important;
-    max-width: 40%;
+  max-width: 40%;
 }
 
 .col-lg-3.col-md-6.mb-4.mb-md-0 {
