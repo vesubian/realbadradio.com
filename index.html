@@ -36,12 +36,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		$(document).ready(function(){
       $("#jquery_jplayer_1").jPlayer({
 				ready: function () {
+          ready = true;
 					$(this).jPlayer("setMedia", {
 						mp3: "http://realbadradio.ddns.net:21000/mpd.mp3"
 					})
 				},
         keyEnabled: true,
         preload: 'none',
+      pause: function() {
+          $(this).jPlayer("clearMedia");
+      },
+      error: function(event) {
+          if(ready && event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
+              // Setup the media stream again and play it.
+              $(this).jPlayer("setMedia", {
+    						mp3: "http://realbadradio.ddns.net:21000/mpd.mp3"
+    					}).jPlayer("play");
+          }
+      },
 			});
 		});
 		//]]>
@@ -91,7 +103,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<a class="btn jp-play" role="button" tabindex="0" href="#">
 							<i class="bi bi-play-fill"></i> Play
 						</a>
-						<a class="btn jp-pause" role="button" tabindex="0" href="#" onClick="window.location.reload(true)">
+						<a class="btn jp-pause" role="button" tabindex="0" href="#">
 							<i class="bi bi-pause-fill"></i> Pause
 						</a>
           </center>
