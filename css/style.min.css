@@ -12,10 +12,17 @@ img {
 section .jp-state-playing .jp-play {
     display: none;
 }
+<<<<<<< HEAD
 section .jp-stop .jp-pause {
     display: none;
 }
 section .jp-state-playing .jp-stop .jp-pause {
+=======
+section .jp-pause {
+    display: none;
+}
+section .jp-state-playing .jp-pause {
+>>>>>>> 4cae4fc42ba3ab41d8bd839baab2756311607f8e
  /*   display: initial !important; */
     display: inline-block;
 }
@@ -30,10 +37,14 @@ section .jp-state-playing .jp-stop .jp-pause {
 }
 
 .currenttrack {
-  margin-top: 3.5rem;
-  margin-bottom: 1rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
   text-align: center;
   color: #686464;
+}
+
+ul.list-unstyled {
+  margin-bottom: 0rem;
 }
 
 .lamixtape {
@@ -50,9 +61,31 @@ section .jp-state-playing .jp-stop .jp-pause {
   padding-top: 15%;
 }
 
+.img-fluid {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+@media only screen and (max-height: 388px) {
+  .img-fluid {
+    height: 50% !important;
+    width: auto !important;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .lamixdiv {
     padding-top: 25%;
+  }
+  .col-lg-6.col-md-12.mb-4.mb-md-0 {
+      max-width: 100% !important;
+    }
+  .col-lg-3.col-md-6.mb-4.mb-md-0 {
+    display: none;
   }
 }
 
@@ -60,4 +93,46 @@ section .jp-state-playing .jp-stop .jp-pause {
   .lamixdiv {
     padding-top: 45%;
   }
+}
+
+.copyright {
+  display: none;
+}
+
+.footertitles {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.footerfont {
+  font-size: 0.8rem;
+  color: #686464 !important;
+  padding-left: 10px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  max-height: 6rem;
+  background-color: #bdc3c726;
+  border-top-width: 1px;
+  border-top-color: #847f7f99;
+  border-top-style: groove;
+}
+
+.col-lg-6.col-md-12.mb-4.mb-md-0 {
+  /* max-width: 40%; */
+  margin-bottom: unset !important;
+    max-width: 40%;
+}
+
+.col-lg-3.col-md-6.mb-4.mb-md-0 {
+  margin-bottom: unset !important;
+    max-width: 30%;
+}
+
+#discogs-link {
+  color: unset !important;
 }

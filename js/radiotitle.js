@@ -16,6 +16,10 @@ function radioTitle() {
             $('#track-title').text(json[mountpoint].title);
             // this is the element we're updating that will hold the listeners count
             // $('#listeners').text(json[mountpoint].listeners);
+            function updateDiscogsLink() {
+              document.getElementById("discogs-link").href = 'https://www.discogs.com/search/?q=' + document.getElementById("track-title").innerHTML;
+            }
+            updateDiscogsLink()
         },
           error: function (e) {    console.log(e.message);
         }
@@ -23,7 +27,7 @@ function radioTitle() {
 }
 
 $(document).ready(function () {
-setTimeout(function () {radioTitle();}, 2000);
+setTimeout(function () {radioTitle();}, 0);
 // we're going to update our html elements / player every 15 seconds
 setInterval(function () {radioTitle();}, 5000);
 });
