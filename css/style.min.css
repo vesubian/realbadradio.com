@@ -21,6 +21,10 @@ section .jp-state-playing .jp-pause {
     display: inline-block;
 }
 
+.container {
+  padding-bottom: 10px;
+}
+
 .btn {
   width: 115px;
   color:#222;
@@ -39,20 +43,6 @@ section .jp-state-playing .jp-pause {
 
 ul.list-unstyled {
   margin-bottom: 0rem;
-}
-
-.lamixtape {
-  width: 5rem;
-  color: #222;
-  font-weight: bold;
-  float: right;
-  padding-bottom: unset;
-  display: block;
-}
-
-.lamixdiv {
-  display: none;
-  padding-top: 15%;
 }
 
 .img-fluid {
@@ -108,13 +98,16 @@ ul.list-unstyled {
 
 #footer .row {
   padding: 10px;
+  padding-bottom: 0px;
   flex-wrap: unset;
 }
 
 .col-lg-6.col-md-12.mb-4.mb-md-0 {
-  /* max-width: 40%; */
   margin-bottom: unset !important;
   max-width: 40%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .col-lg-3.col-md-6.mb-4.mb-md-0 {

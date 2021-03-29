@@ -17,20 +17,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 <script type="text/javascript"  src="js/radiotitle.js"></script>
-<script>
-$(window).resize(function() {
-$(document).ready(function() {
-
-    var docHeight = $(window).height();
-    var footerHeight = $('#footer').outerHeight();
-    var footerTop = $('#footer').position().top + footerHeight;
-
-    if (footerTop < docHeight)
-        $('#footer').css('margin-top', (docHeight - footerTop) + 'px');
-});});
-$(window).resize();
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+// $(window).resize(function() {
+  $(document).ready(function() {
+    setInterval(function() {
+        var docHeight = $(window).height();
+        var footerHeight = $('#footer').outerHeight();
+        var footerTop = $('#footer').position().top + footerHeight;
+        var marginTop = (docHeight - footerTop);
+        if (footerTop < docHeight) {
+            $('#footer').css('margin-top', marginTop + 'px'); // padding of 30 on footer
+        } else {
+            $('#footer').css('margin-top', '0px');
+        }
+        $('#footer').removeClass('invisible');
+        // console.log("docheight: " + docHeight + "\n" + "footerheight: " + footerHeight + "\n" + "footertop: " + footerTop + "\n" + "new docheight: " + $(window).height() + "\n" + "margintop: " + marginTop);
+    }, 0);
+  });
+// });
+// $(window).resize();
 </script>
-
 <script type="text/javascript">
 //<![CDATA[
 $(document).ready(function(){
@@ -83,38 +90,37 @@ $(document).ready(function(){
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
+</head>
 
-  </head>
-  <body>
-
+<body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMHR5PL"
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMHR5PL"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-
-		<section class="container">
-			<div class="row">
-        <div class="col-md-3"></div>
-				<div class="col-md-6">
-          <img class="img-fluid" src="img/real-bad-radio.png">
-					<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-					<div id="jp_container_1" role="application" aria-label="media player">
-            <center>
-						<a class="btn jp-play" role="button" tabindex="0" href="#">
-							<i class="bi bi-play-fill"></i> Play
-						</a>
-						<a class="btn jp-pause" role="button" tabindex="0" href="#">
-							<i class="bi bi-pause-fill"></i> Pause
-						</a>
-          </center>
-					</div>
-				</div>
-        <div class="col-md-3">
+<section class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <img class="img-fluid" src="img/real-bad-radio.png">
+      <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+      <div id="jp_container_1" role="application" aria-label="media player">
+        <center>
+        <a class="btn jp-play" role="button" tabindex="0" href="#">
+          <i class="bi bi-play-fill"></i> Play
+        </a>
+        <a class="btn jp-pause" role="button" tabindex="0" href="#">
+          <i class="bi bi-pause-fill"></i> Pause
+        </a>
+      </center>
       </div>
-			</div>
-		</section>
-    <!-- Footer -->
-<footer class="bg-light text-center text-lg-start" id="footer">
+    </div>
+    <div class="col-md-3">
+  </div>
+  </div>
+</section>
+<!-- Footer -->
+<footer class="bg-light text-center text-lg-start invisible" id="footer">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
@@ -147,6 +153,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>
