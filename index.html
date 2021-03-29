@@ -41,8 +41,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						mp3: "http://realbadradio.ddns.net:21000/mpd.mp3"
 					})
 				},
-        keyEnabled: true,
-        preload: 'none',
       pause: function() {
           $(this).jPlayer("clearMedia");
       },
@@ -54,6 +52,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     					}).jPlayer("play");
           }
       },
+      keyEnabled: true,
+      preload: 'none',
 			});
 		});
 		//]]>
