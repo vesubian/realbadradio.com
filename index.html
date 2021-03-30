@@ -134,7 +134,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
         <ul class="list-unstyled">
           <li>
-            <!-- <i class="fas fa-link"></i><a href="https://lamixtape.fr" target="_blank"  class="footerfont">lamixtape.fr</a> -->
             <img class="k7" src="img/k7.png"><a href="https://lamixtape.fr" target="_blank"  class="footerfont">lamixtape.fr</a>
           </li>
         </ul>
@@ -142,18 +141,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
         <ul class="list-unstyled">
           <li>
-            <i class="far fa-envelope"></i><a href="mailto:contact@realbadradio.com" class="footerfont">contact@realbadradio.com</a>
+            <i class="far fa-envelope"></i>
+            <script type="text/javascript">
+              emailE = 'realbadradio.com'
+              emailE = ('contact' + '@' + emailE)
+              document.write('<a href="mailto:' + emailE + '"' + ' class="footerfont">' + emailE + '</a>')
+            </script>
+            <noscript class="footerfont">
+              Email address protected by JavaScript
+            </noscript>
           </li>
         </ul>
       </div>
     </div>
   </div>
-  <!-- Copyright -->
-  <div class="text-center p-3 copyright" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2021 Copyright:
-    <a class="text-dark" href="https://mdbootstrap.com/">realbadradio.com</a>
-  </div>
-  <!-- Copyright -->
 </footer>
 <!-- Footer -->
 </body>
