@@ -90,7 +90,7 @@ ul.list-unstyled {
 #footer {
   position: relative;
   height: 46px;
-  background-color: #bdc3c726;
+  background-color: #ebebec5e !important;
   border-top-width: 1px;
   border-top-color: #847f7f99;
   border-top-style: groove;
@@ -118,4 +118,36 @@ ul.list-unstyled {
 
 #discogs-link {
   color: unset !important;
+}
+
+ .list-unstyled:hover i {
+  font-size: 1.1rem;
+    .footerfont {
+      padding-left: 0px;
+  }
+}
+
+.list-unstyled:hover .footerfont {
+  padding-left: 8px;
+}
+
+.col-lg-6.col-md-12.mb-4.mb-md-0:hover i {
+  font-size: 1.1rem !important;
+}
+
+.col-lg-6.col-md-12.mb-4.mb-md-0:hover .footerfont {
+  padding-left: 8px;
+}
+
+.list-unstyled:hover .k7 {
+  height: 25px;
+  width: auto;
+  margin-top: -4px;
+  padding-bottom: 4px;
+}
+
+img.k7 {
+  width: 19px;
+  padding: 0px;
+  padding-bottom: 5px;
 }
