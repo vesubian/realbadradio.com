@@ -26,7 +26,7 @@ $(document).ready(function() {
       var docHeight = $(window).height();
       var footerHeight = $('#footer').outerHeight();
       var footerTop = $('#footer').position().top + footerHeight;
-      var marginTop = (docHeight - footerTop - 1);
+      var marginTop = (docHeight - footerTop);
       if (footerTop < docHeight) {
           $('#footer').css('margin-top', marginTop + 'px'); // padding of 30 on footer
       } else {

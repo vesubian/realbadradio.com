@@ -22,7 +22,7 @@ section .jp-state-playing .jp-pause {
 }
 
 .container {
-  padding-bottom: 10px;
+  margin-top: 9px;
 }
 
 .btn {
@@ -97,8 +97,6 @@ ul.list-unstyled {
 }
 
 #footer .row {
-  padding: 10px;
-  padding-bottom: 0px;
   flex-wrap: unset;
 }
 
