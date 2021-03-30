@@ -88,19 +88,11 @@ ul.list-unstyled {
   color: unset !important;
 }
 
- .list-unstyled:hover i {
-  font-size: 1.1rem;
-}
-
-.list-unstyled:hover .footerfont {
-  padding-left: 8px;
-}
-
-.col-lg-6.col-md-12.mb-4.mb-md-0:hover i {
+.col-lg-6.col-md-12.mb-4.mb-md-0:hover i,  .list-unstyled:hover i {
   font-size: 1.1rem !important;
 }
 
-.col-lg-6.col-md-12.mb-4.mb-md-0:hover .footerfont {
+.col-lg-6.col-md-12.mb-4.mb-md-0:hover .footerfont, .list-unstyled:hover .footerfont {
   padding-left: 8px;
 }
 
@@ -113,8 +105,7 @@ ul.list-unstyled {
 
 .k7 {
   width: 19px;
-  padding: 0px;
-  padding-bottom: 5px;
+  padding: 0px 0px 5px;
 }
 
 @media only screen and (max-width: 600px) {
