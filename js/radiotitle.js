@@ -2,7 +2,7 @@
 
 function radioTitle() {
   // this is the URL of the json.xml file located on your server.
-  var url = 'http://82.64.169.47/json.xsl';
+  var url = 'https://subshapes.com/json.xsl';
   // this is your mountpoint's name, mine is called /radio
   var mountpoint = '/mpd.mp3';
   $.ajax({  type: 'GET',
