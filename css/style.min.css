@@ -21,8 +21,18 @@ section .jp-state-playing .jp-pause {
     display: inline-block;
 }
 
+a, a:hover {
+  color: unset;
+}
+
+.vlcicon {
+  width: 18px;
+  /* padding-left: 40px; */
+}
+
 .container {
   margin-top: 9px;
+  max-width: 90%;
 }
 
 .btn {
@@ -46,6 +56,10 @@ ul.list-unstyled {
   margin-bottom: 0rem;
 }
 
+.footer ::after,.footer ::before {
+    box-sizing: unset;
+}
+
 .img-fluid {
   display: block;
   margin-left: auto;
@@ -59,6 +73,8 @@ ul.list-unstyled {
   font-size: 0.8rem;
   color: #686464 !important;
   padding-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 #footer {
@@ -72,16 +88,45 @@ ul.list-unstyled {
 
 .col-lg-6.col-md-12.mb-4.mb-md-0 {
   margin-bottom: unset !important;
-  max-width: 40%;
+  max-width: 30%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+.col-lg-6.col-md-12.mb-4.mb-md-0:hover {
+  overflow: visible;
+  background: #f8f8f8;
+}
+
+.col-lg-6.col-md-12.mb-4.mb-md-0:hover .openinplayer  {
+  display: none;
+}
+
 .col-lg-3.col-md-6.mb-4.mb-md-0 {
   margin-bottom: unset !important;
-  max-width: 30%;
+  max-width: 20%;
   white-space: nowrap;
+  box-sizing: unset;
+}
+
+.openinplayer {
+  padding-left: 6%;
+  max-width: 20%;
+}
+
+.openinplayer img {
+  padding-bottom: unset;
+    margin-top: -6px;
+}
+
+.openinplayer:hover img {
+  width: 20px;
+  margin-top: -8px;
+}
+
+.openinplayer:hover .footerfont {
+  padding-left: 8px;
 }
 
 #discogs-link {
@@ -108,11 +153,17 @@ ul.list-unstyled {
   padding: 0px 0px 5px;
 }
 
+@media only screen and (max-width: 881px) {
+  .openinplayer {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .col-lg-6.col-md-12.mb-4.mb-md-0 {
     max-width: 100% !important;
   }
-  .col-lg-3.col-md-6.mb-4.mb-md-0 {
+  .col-lg-3.col-md-6.mb-4.mb-md-0, .openinplayer {
     display: none;
   }
 }
