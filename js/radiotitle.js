@@ -20,7 +20,7 @@ function radioTitle() {
             var dissearch = 'https://www.discogs.com/search/?q='
             var dislink = document.getElementById("track-title").innerHTML
             var trimID =  dislink.indexOf("(")
-            if (trimID = -1) { trimID = dislink.length }
+            if (trimID === -1) { trimID = dislink.length }
             document.getElementById("discogs-link").href = dissearch + dislink.slice(0, trimID) ;
           }
           updateDiscogsLink()
