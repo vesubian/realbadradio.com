@@ -17,11 +17,11 @@ function radioTitle() {
           // this is the element we're updating that will hold the listeners count
           // $('#listeners').text(json[mountpoint].listeners);
           function updateDiscogsLink() {
-            const discsearch = 'https://www.discogs.com/search/?q='
-            let disclink = document.getElementById("track-title").innerHTML
-            let  trimID =  disclink.indexOf("(")
-            if (trimID === -1) { trimID = disclink.length }
-            document.getElementById("discogs-link").href = discsearch + disclink.slice(0, trimID) ;
+            const discsearch = 'https://www.discogs.com/search/?q=';
+            let disclink = document.getElementById("track-title").innerHTML;
+            let  trimID =  disclink.indexOf("(");
+            if (trimID === -1) { trimID = disclink.length };
+            document.getElementById("discogs-link").href = discsearch + disclink.slice(0, trimID);
           }
           updateDiscogsLink()
       },
