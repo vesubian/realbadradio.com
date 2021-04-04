@@ -17,7 +17,11 @@ function radioTitle() {
           // this is the element we're updating that will hold the listeners count
           // $('#listeners').text(json[mountpoint].listeners);
           function updateDiscogsLink() {
-            document.getElementById("discogs-link").href = 'https://www.discogs.com/search/?q=' + document.getElementById("track-title").innerHTML;
+            var dissearch = 'https://www.discogs.com/search/?q='
+            var dislink = document.getElementById("track-title").innerHTML
+            var trimID =  dislink.indexOf("(")
+            if (trimID = -1) { trimID = dislink.length }
+            document.getElementById("discogs-link").href = dissearch + dislink.slice(0, trimID) ;
           }
           updateDiscogsLink()
       },
