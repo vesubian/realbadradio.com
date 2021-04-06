@@ -19,7 +19,7 @@ function radioTitle() {
           function updateDiscogsLink() {
             const discsearch = 'https://www.discogs.com/search/?q=';
             let disclink = document.getElementById("track-title").innerHTML;
-            disclink =  disclink.replace(/[|]|&/g, '');
+            disclink =  disclink.replace(/[|]|&|Feat\.|feat\.|Featuring|featuring/g, '');
             let  trimID =  disclink.indexOf("(");
             if (trimID === -1) { trimID = disclink.length };
             document.getElementById("discogs-link").href = discsearch + disclink.slice(0, trimID);
