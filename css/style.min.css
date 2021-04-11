@@ -126,11 +126,7 @@ ul {
 .openinplayer:hover img {
   width: 20px;
   margin-top: -10px;
-  margin-right: -0.5px;
-}
-
-.openinplayer:hover .footerfont {
-  padding-left: 8px;
+  margin-right: -2px;
 }
 
 #discogs-link {
@@ -142,9 +138,14 @@ ul {
 
 .col-md-3:hover i {
   font-size: 1.1rem !important;
+  margin-right: 0.5px;
 }
 
-.col-md-3:hover .footerfont {
+.email:hover i {
+  margin-right: -1.5px;
+}
+
+.track:hover .footerfont {
   padding-left: 8px;
 }
 
@@ -152,6 +153,7 @@ ul {
   height: 25px;
   width: auto;
   margin-top: -4px;
+  margin-right: -2px;
   padding-bottom: 4px;
 }
 
