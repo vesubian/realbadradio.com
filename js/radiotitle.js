@@ -19,10 +19,9 @@ function radioTitle() {
           function updateDiscogsLink() {
             const discsearch = 'https://www.discogs.com/search/?q=';
             let disclink = document.getElementById("track-title").innerHTML;
-            // let disclink = document.getElementById("track-title").innerHTML;
             disclink =  disclink.replace(/[|]|&|Feat\.|feat\.|ft\.|Featuring|featuring/g, '');
             let  trimID =  disclink.indexOf("(") - 1;
-            if (trimID === -2) { trimID = disclink.length };
+            if (trimID == -2) { trimID = disclink.length };
             document.getElementById("discogs-link").href = discsearch + encodeURIComponent(disclink.slice(0, trimID));
           }
           updateDiscogsLink()
