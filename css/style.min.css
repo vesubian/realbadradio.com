@@ -114,6 +114,16 @@ ul {
   background: #f8f8f8;
 }
 
+.track {
+  padding-left: 22px;
+}
+
+#track-title {
+  width: 100%;
+  text-align: left;
+  vertical-align: bottom;
+}
+
 .openinplayer {
   white-space: nowrap;
 }
@@ -132,8 +142,8 @@ ul {
 #discogs-link {
   z-index: 1;
   position: relative;
-  padding-right: 10px;
-  max-width: 30%;
+  max-width: 100%;
+  text-align: left;
 }
 
 .col-md-3:hover i {
