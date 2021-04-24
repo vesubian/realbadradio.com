@@ -28,6 +28,18 @@ ul {
   margin-bottom: 0px;
 }
 
+#jp_container_1 {
+  /* position: absolute;
+  bottom: 0;
+   left: 0;
+  right: 0; */
+  /* margin-top: 500px; */
+}
+
+#player {
+  padding-top: 4vh;
+}
+
 .vlcicon {
   padding-bottom: 1vh;
   width: 18px;
@@ -76,7 +88,7 @@ ul {
   margin-right: auto;
   width: auto;
   height: auto !important;
-  max-width: 90% !important;
+  max-width: 82% !important;
   min-width: 200px;
 }
 
@@ -173,6 +185,46 @@ ul {
   margin-right: 4px;
 }
 
+#cf {
+  position:relative;
+  height: 430px;
+  width: auto;
+  margin:0 auto;
+}
+
+#cf img {
+  position:absolute;
+  left:0;
+  right: 0;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+
+@keyframes cf3FadeInOut {
+0% {
+opacity:1;
+}
+45% {
+opacity:1;
+}
+55% {
+opacity:0;
+}
+100% {
+opacity:0;
+}
+}
+
+#cf img.top {
+animation-name: cf3FadeInOut;
+animation-timing-function: step-end;
+animation-iteration-count: infinite;
+animation-duration: 15s;
+animation-direction: alternate;
+}
+
 @media only screen and (max-width: 768px) {
   .track {
       max-width: 50% !important;
@@ -188,11 +240,20 @@ ul {
   }
 }
 
+@media only screen and (max-width: 900px) {
+  #cf {
+    height: 350px;
+  }
+}
+
 @media only screen and (max-width: 430px) {
   .lamix, .openinplayer {
     display: none;
   }
   .col-md-3 {
     max-width: 100% !important;
+  }
+  #cf {
+    height: 200px;
   }
 }
