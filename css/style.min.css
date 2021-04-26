@@ -189,6 +189,7 @@ ul {
   position:relative;
   height: 430px;
   width: auto;
+  max-width: 760px;
   margin:0 auto;
 }
 
