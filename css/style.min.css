@@ -42,7 +42,19 @@ ul {
   width: 18px;
 }
 
-.openinplayer, .lamix, .email, .track {
+.lamix {
+  padding-left: 24px !important;
+}
+
+.track {
+  padding-left: 10% !important;
+}
+
+.track {
+  display: block;
+}
+
+.openinplayer, .lamix, .email {
   display: inline-block;
   padding: 2px;
 }
@@ -52,9 +64,10 @@ ul {
   width: 100%;
 }
 
-.col-md-4 {
+.col-md-8 {
   white-space: nowrap;
-  max-width: 25% !important;
+  overflow: hidden;
+  /* max-width: 25% !important; */
 }
 
 .container {
@@ -121,14 +134,9 @@ ul {
   overflow: visible;
 }
 
-#discogs-link:hover  {
-  background: #f8f8f8;
-}
-
 #track-title {
   width: 100%;
   text-align: left;
-  padding-left: 10px;
 }
 
 .openinplayer {
@@ -153,17 +161,25 @@ ul {
   text-align: left;
 }
 
-.col-md-4.img:hover img {
-  font-size: 1.1rem !important;
-  margin-right: 0.5px;
+.track:hover .fas {
+  font-size: 1.2rem !important;
 }
+
+.track:hover .currenttrack {
+  font-size: 0.82rem;
+}
+
 .far, .fas {
   font-size: 1.1rem;
 }
 
-.far:hover, .fas:hover {
+.far:hover {
   font-size: 1.2rem !important;
   margin-right: -1.5px;
+}
+
+.fas:hover {
+  font-size: 1.2rem !important;
 }
 
 .list-unstyled:hover .k7 {
@@ -221,11 +237,22 @@ opacity:0;
   animation-direction: alternate;
 }
 
-@media only screen and (max-width: 768px) {
+.col-md-8 {
+  text-align: left;
+  max-width: 62%;
+}
+
+@media only screen and (max-width: 767px) {
+  .col-md-4 {
+    display: none;
+  }
+  .col-md-8 #track-title {
+    text-align: center !important;
+  }
 }
 
 @media only screen and (max-width: 430px) {
-  .col-md-4 {
+  .col-md-8 {
     max-width: 100% !important;
   }
 
