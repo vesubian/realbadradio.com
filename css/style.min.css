@@ -32,9 +32,19 @@ ul {
   padding: 4vh 0 4vh;
 }
 
+.email {
+  position: relative;
+  margin-bottom: -6px;
+}
+
 .vlcicon {
   padding-bottom: 1vh;
   width: 18px;
+}
+
+.openinplayer, .lamix, .email, .track {
+  display: inline-block;
+  padding: 2px;
 }
 
 .row {
@@ -42,7 +52,7 @@ ul {
   width: 100%;
 }
 
-.col-md-3 {
+.col-md-4 {
   white-space: nowrap;
   max-width: 25% !important;
 }
@@ -87,7 +97,7 @@ ul {
 .footerfont {
   font-size: 0.8rem;
   color: #686464 !important;
-  padding-left: 10px;
+  padding-left: 22px;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -95,10 +105,7 @@ ul {
 #footer {
   position: relative;
   height: 46px;
-  background-color: #ebebec5e !important;
-  border-top-width: 1px;
-  border-top-color: #847f7f99;
-  border-top-style: groove;
+  padding: 2px;
 }
 
 .col-md-3 {
@@ -118,14 +125,10 @@ ul {
   background: #f8f8f8;
 }
 
-.track {
-  padding-left: 22px;
-}
-
 #track-title {
   width: 100%;
   text-align: left;
-  vertical-align: bottom;
+  padding-left: 10px;
 }
 
 .openinplayer {
@@ -150,17 +153,17 @@ ul {
   text-align: left;
 }
 
-.col-md-3:hover i {
+.col-md-4.img:hover img {
   font-size: 1.1rem !important;
   margin-right: 0.5px;
 }
-
-.email:hover i {
-  margin-right: -1.5px;
+.far, .fas {
+  font-size: 1.1rem;
 }
 
-.track:hover .footerfont {
-  padding-left: 8px;
+.far:hover, .fas:hover {
+  font-size: 1.2rem !important;
+  margin-right: -1.5px;
 }
 
 .list-unstyled:hover .k7 {
@@ -219,25 +222,14 @@ opacity:0;
 }
 
 @media only screen and (max-width: 768px) {
-  .track {
-      max-width: 50% !important;
-    }
-  .openinplayer {
-    max-width: 25% !important;
-  }
-  .lamix {
-    max-width: 25% !important;
-  }
-  .email {
-    display: none;
-  }
 }
 
 @media only screen and (max-width: 430px) {
-  .lamix, .openinplayer {
-    display: none;
-  }
-  .col-md-3 {
+  .col-md-4 {
     max-width: 100% !important;
+  }
+
+  .openinplayer, .lamix, .email {
+    display:none;
   }
 }
