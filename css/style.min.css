@@ -2,7 +2,7 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
 
 body {
- padding-top: 10vh;
+ padding-top: 8vh;
   height: 100%;
 }
 
@@ -28,16 +28,8 @@ ul {
   margin-bottom: 0px;
 }
 
-#jp_container_1 {
-  /* position: absolute;
-  bottom: 0;
-   left: 0;
-  right: 0; */
-  /* margin-top: 500px; */
-}
-
 #player {
-  padding-top: 4vh;
+  padding: 4vh 0 4vh;
 }
 
 .vlcicon {
@@ -46,7 +38,7 @@ ul {
 }
 
 .row {
-  margin-top: 9px;
+  margin: 9px 0 0 0;
   width: 100%;
 }
 
@@ -186,8 +178,7 @@ ul {
 }
 
 #cf {
-  position:relative;
-  height: 430px;
+  height: auto;
   width: auto;
   max-width: 760px;
   margin:0 auto;
@@ -220,11 +211,11 @@ opacity:0;
 }
 
 #cf img.top {
-animation-name: cf3FadeInOut;
-animation-timing-function: step-end;
-animation-iteration-count: infinite;
-animation-duration: 15s;
-animation-direction: alternate;
+  animation-name: cf3FadeInOut;
+  animation-timing-function: step-end;
+  animation-iteration-count: infinite;
+  animation-duration: 15s;
+  animation-direction: alternate;
 }
 
 @media only screen and (max-width: 768px) {
@@ -242,20 +233,11 @@ animation-direction: alternate;
   }
 }
 
-@media only screen and (max-width: 900px) {
-  #cf {
-    height: 350px;
-  }
-}
-
 @media only screen and (max-width: 430px) {
   .lamix, .openinplayer {
     display: none;
   }
   .col-md-3 {
     max-width: 100% !important;
-  }
-  #cf {
-    height: 200px;
   }
 }
