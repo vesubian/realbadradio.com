@@ -164,6 +164,9 @@ ul {
 .track:hover .fas {
   font-size: 1.2rem !important;
 }
+.currenttrack {
+  padding-left: 16px;
+}
 
 .track:hover .currenttrack {
   font-size: 0.82rem;
@@ -239,7 +242,6 @@ opacity:0;
 
 .col-md-8 {
   text-align: left;
-  max-width: 62%;
 }
 
 @media only screen and (max-width: 767px) {
