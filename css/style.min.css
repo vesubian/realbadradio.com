@@ -47,11 +47,11 @@ ul {
 }
 
 .track {
-  padding-left: 10% !important;
+  padding-left: 22px;
 }
 
 .track {
-  display: block;
+  display: inline-block;
 }
 
 .openinplayer, .lamix, .email {
@@ -242,6 +242,7 @@ opacity:0;
 
 .col-md-8 {
   text-align: left;
+  white-space: nowrap;
 }
 
 @media only screen and (max-width: 767px) {
