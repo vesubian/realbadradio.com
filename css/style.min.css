@@ -246,16 +246,13 @@ opacity:0;
   .col-md-4 {
     display: none;
   }
-  .col-md-8 #track-title {
-    text-align: center !important;
+  .col-md-8 {
+      text-align: center;
+      max-width: 100%;
   }
 }
 
 @media only screen and (max-width: 430px) {
-  .col-md-8 {
-    max-width: 100% !important;
-  }
-
   .openinplayer, .lamix, .email {
     display:none;
   }
