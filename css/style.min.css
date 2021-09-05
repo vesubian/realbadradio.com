@@ -156,15 +156,13 @@ ul {
   text-align: left;
 }
 
-.track:hover .fas {
-  font-size: 1.2rem !important;
-}
-.currenttrack {
-  padding-left: 16px;
+#discogs-link:hover .fas {
+    font-size: 1.2rem !important;
+    margin-right: -1.5px;
 }
 
-.track:hover .currenttrack {
-  font-size: 0.82rem;
+.currenttrack {
+  padding-left: 16px;
 }
 
 .far, .fas {
@@ -174,10 +172,6 @@ ul {
 .far:hover {
   font-size: 1.2rem !important;
   margin-right: -1.5px;
-}
-
-.fas:hover {
-  font-size: 1.2rem !important;
 }
 
 .list-unstyled:hover .k7 {
