@@ -108,7 +108,7 @@ ul {
 }
 
 .footerfont {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #686464 !important;
   padding-left: 22px;
   white-space: nowrap;
@@ -157,8 +157,8 @@ ul {
 }
 
 #discogs-link:hover .fas {
-    font-size: 1.2rem !important;
-    margin-right: -1.5px;
+  font-size: 1.2rem !important;
+  margin-right: -1.5px;
 }
 
 .currenttrack {
