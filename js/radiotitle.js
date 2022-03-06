@@ -18,11 +18,13 @@ function radioTitle() {
           // $('#listeners').text(json[mountpoint].listeners);
           function updateDiscogsLink() {
             const discsearch = 'https://www.discogs.com/search/?q=';
-            let disclink = document.getElementById("track-title").innerHTML;
-            disclink =  disclink.replace(/[|]|&|Feat\.|feat\.|ft\.|Featuring|featuring/g, '');
+            //let disclink = document.getElementById("track-title").innerHTML.replace('&amp;', '&');
+            let disclink = document.getElementById("track-title").textContent;
+            //disclink =  disclink.replace(/[|]|&amp;|Feat\.|feat\.|ft\.|Featuring|featuring/gi, '');
             let  trimID =  disclink.indexOf("(") - 1;
             if (trimID == -2) { trimID = disclink.length };
             document.getElementById("discogs-link").href = discsearch + encodeURIComponent(disclink.slice(0, trimID));
+            //document.getElementById("discogs-link").href = discsearch + encodeURIComponent(disclink);
           }
           updateDiscogsLink()
       },
