@@ -2,7 +2,6 @@
 
 function radioTitle() {
   var url = 'https://stream.realbadradio.com/json2.txt';
-  var mountpoint = '/mpd.mp3';
   $.ajax({  type: 'GET',
         url: url,
         async: true,
