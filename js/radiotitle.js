@@ -24,6 +24,6 @@ function radioTitle() {
 
 $(document).ready(function () {
 setTimeout(function () {radioTitle();}, 0);
-// we're going to update our html elements / player every 15 seconds
+// we're going to update our html elements / player every 5 seconds
 setInterval(function () {radioTitle();}, 5000);
 });
