@@ -1,12 +1,12 @@
 // radiotitle.js
 
 function radioTitle() {
-  var url = 'https://stream.realbadradio.com/title.json';
+  var url = 'https://stream.realbadradio.com/title.js';
   $.ajax({  type: 'GET',
         url: url,
         async: true,
         jsonpCallback: 'parseMusic',
-        contentType: "application/json",
+        contentType: "application/javascript",
         dataType: 'jsonp',
         success: function (json) {
           $('#track-title').text(json.title);
