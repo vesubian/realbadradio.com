@@ -1,7 +1,7 @@
 // radiotitle.js
 
 function radioTitle() {
-  var url = 'https://stream.realbadradio.com/json2.txt';
+  var url = 'https://stream.realbadradio.com/title.json';
   $.ajax({  type: 'GET',
         url: url,
         async: true,
