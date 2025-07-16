@@ -1,172 +1,184 @@
 <!doctype html>
 <html lang="en">
   <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TMHR5PL');</script>
-<!-- End Google Tag Manager -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TMHR5PL');</script>
+    <!-- End Google Tag Manager -->
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Real Bad Radio - Keep it locked">
+    <meta name="author" content="Real Bad Radio">
 
-<link rel="stylesheet" href="css/style.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-<script>!window.jQuery && document.write('<script src="js/jquery.min.js"><\/script>')</script>
-<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
-<script type="text/javascript"  src="js/radiotitle.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-// $(window).resize(function() {
-$(document).ready(function() {
-  setInterval(
-    function() {
-      var docHeight = $(window).height();
-      var footerHeight = $('#footer').outerHeight();
-      var footerTop = $('#footer').position().top + footerHeight;
-      var marginTop = (docHeight - footerTop);
-      if (footerTop < docHeight) {
-          $('#footer').css('margin-top', marginTop + 'px'); // padding of 30 on footer
-      } else {
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>!window.jQuery && document.write('<script src="js/jquery.min.js"><\/script>')</script>
+    <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+    <script type="text/javascript" src="js/radiotitle.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+    $(document).ready(function() {
+      setInterval(function() {
+        var docHeight = $(window).height();
+        var footerHeight = $('#footer').outerHeight();
+        var footerTop = $('#footer').position().top + footerHeight;
+        var marginTop = (docHeight - footerTop);
+        if (footerTop < docHeight) {
+          $('#footer').css('margin-top', marginTop + 'px');
+        } else {
           $('#footer').css('margin-top', '0px');
-      }
-      $('#footer').removeClass('invisible');
-    },
-  0);
-});
+        }
+        $('#footer').removeClass('invisible');
+      }, 0);
+    });
+    </script>
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+      const stream = {
+        mp3: 'https://stream.realbadradio.com/mpd.mp3'
+      };
+      let ready = false;
+      $("#jquery_jplayer_1").jPlayer({
+        ready: function () {
+          ready = true;
+          $(this).jPlayer("setMedia", stream);
+        },
+        pause: function() {
+          $(this).jPlayer("clearMedia");
+        },
+        error: function(event) {
+          if(ready && event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
+            $(this).jPlayer("setMedia", stream).jPlayer("play");
+          }
+        },
+        keyEnabled: true,
+        preload: 'none',
+        swfPath: "/js"
+      });
+    });
+    </script>
+    
+    <title>Real Bad Radio</title>
+    <meta name="title" content="Keep it locked">
 
-</script>
-<script type="text/javascript">
-//<![CDATA[
-$(document).ready(function(){
-  const stream = {
-    // stream address
-    mp3: 'https://stream.realbadradio.com/mpd.mp3'
-  };
-  ready = false;
-  $("#jquery_jplayer_1").jPlayer({
-    ready: function () {
-      ready = true;
-      $(this).jPlayer("setMedia", stream);
-    },
-    pause: function() {
-      $(this).jPlayer("clearMedia");
-    },
-    error: function(event) {
-      if(ready && event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
-        // Setup the media stream again and play it.
-        $(this).jPlayer("setMedia", stream).jPlayer("play");
-      }
-    },
-    keyEnabled: true,
-    preload: 'none',
-    swfPath: "/js"
-  });
-});
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://realbadradio.com">
+    <meta property="og:title" content="Real Bad Radio">
+    <meta property="og:description" content="Keep it locked">
+    <meta property="og:image" content="https://realbadradio.com/img/real-bad-radio.webp">
+    <meta property="og:site_name" content="Real Bad Radio">
 
-</script>
-<title>Real bad radio</title>
-<meta name="title" content="Keep it locked">
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Real Bad Radio">
+    <meta name="twitter:description" content="Keep it locked">
+    <meta name="twitter:image" content="https://realbadradio.com/img/real-bad-radio.webp">
 
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://realbadradio">
-<meta property="og:title" content="Real bad radio">
-<meta property="og:image" content="https://realbadradioimg/real-bad-radio.webp">
+    <!-- Favicon and App Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.webp">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/apple-icon-60x60.webp">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.webp">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon-76x76.webp">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.webp">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/apple-icon-120x120.webp">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.webp">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.webp">
+    <link rel="icon" type="image/webp" sizes="192x192" href="img/android-icon-192x192.webp">
+    <link rel="icon" type="image/webp" sizes="32x32" href="img/favicon-32x32.webp">
+    <link rel="icon" type="image/webp" sizes="96x96" href="img/favicon-96x96.webp">
+    <link rel="icon" type="image/webp" sizes="16x16" href="img/favicon-16x16.webp">
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="img/ms-icon-144x144.webp">
+    <meta name="theme-color" content="#ffffff">
+  </head>
 
-<link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.webp">
-<link rel="apple-touch-icon" sizes="60x60" href="img/apple-icon-60x60.webp">
-<link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.webp">
-<link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon-76x76.webp">
-<link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.webp">
-<link rel="apple-touch-icon" sizes="120x120" href="img/apple-icon-120x120.webp">
-<link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.webp">
-<link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.webp">
-<link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.webp">
-<link rel="icon" type="image/webp" sizes="192x192"  href="img/android-icon-192x192.webp">
-<link rel="icon" type="image/webp" sizes="32x32" href="img/favicon-32x32.webp">
-<link rel="icon" type="image/webp" sizes="96x96" href="img/favicon-96x96.webp">
-<link rel="icon" type="image/webp" sizes="16x16" href="img/favicon-16x16.webp">
-<link rel="manifest" href="/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="img/ms-icon-144x144.webp">
-<meta name="theme-color" content="#ffffff">
-</head>
-
-<body>
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMHR5PL"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<section class="container">
-  <div class="row">
-  <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div id="cf">
-        <img class="bottom img-fluid" src="img/real-bad-radio-2.webp" />
-        <img  class="top img-fluid" src="img/real-bad-radio.webp" />
-      </div>
-      <img  class="img-fluid invisible" src="img/real-bad-radio.webp" />
-      <div id="player">
-        <div id="jquery_jplayer_1" class="jp-jplayer"></div>
-        <div id="jp_container_1" role="application" aria-label="media player">
-          <center>
-          <a class="btn jp-play" role="button" tabindex="0" href="#">
-            <i class="bi bi-play-fill"></i> Play
-          </a>
-          <a class="btn jp-pause" role="button" tabindex="0" href="#">
-            <i class="bi bi-pause-fill"></i> Pause
-          </a>
-        </center>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMHR5PL"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <main>
+      <section class="container">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <div id="cf">
+              <img class="bottom img-fluid" src="img/real-bad-radio-2.webp" alt="Real Bad Radio Logo" />
+              <img class="top img-fluid" src="img/real-bad-radio.webp" alt="Real Bad Radio Logo" />
+            </div>
+            <img class="img-fluid invisible" src="img/real-bad-radio.webp" alt="Real Bad Radio Logo" />
+            <div id="player">
+              <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+              <div id="jp_container_1" role="application" aria-label="media player">
+                <div class="text-center">
+                  <a class="btn jp-play" role="button" tabindex="0" href="#" aria-label="Play">
+                    <i class="bi bi-play-fill"></i> Play
+                  </a>
+                  <a class="btn jp-pause" role="button" tabindex="0" href="#" aria-label="Pause">
+                    <i class="bi bi-pause-fill"></i> Pause
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3"></div>
         </div>
-    </div>
-    </div>
-<div class="col-md-3">
-</div>
-</div>
-</section>
-<!-- Footer -->
-<footer class="text-center text-lg-start invisible" id="footer">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="openinplayer">
-          <a href="https://stream.realbadradio.com/mpd.mp3.m3u" class="footerfont">
-            <img class="vlcicon" src="img/vlc.webp">
-          </a>
+      </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="text-center text-lg-start invisible" id="footer">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="openinplayer">
+            <a href="https://stream.realbadradio.com/mpd.mp3.m3u" class="footerfont" aria-label="Open in external player">
+              <img class="vlcicon" src="img/vlc.webp" alt="VLC Icon">
+            </a>
+          </div>
+          <div class="email">
+            <ul class="list-unstyled">
+              <li>
+                <script type="text/javascript">
+                  emailE = 'realbadradio.com'
+                  emailE = ('contact' + '@' + emailE)
+                  document.write('<a href="mailto:' + emailE + '"' + ' class="footerfont" aria-label="Contact us"><i class="far fa-envelope"></i></a>')
+                </script>
+                <noscript class="footerfont">
+                  Email address protected by JavaScript
+                </noscript>
+              </li>
+            </ul>
+          </div>
+          <div class="lamix">
+            <ul class="list-unstyled">
+              <li>
+                <a href="https://lamixtape.fr" target="_blank" rel="noopener noreferrer" aria-label="Visit Lamixtape">
+                  <img class="k7" src="img/k7.webp" alt="K7 Icon">
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="track">
+            <a id="discogs-link" target="_blank" href="discogslink" rel="noopener noreferrer" aria-label="View on Discogs">
+              <i class="fas fa-music"></i><span id="track-title" class="currenttrack footerfont"></span>
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="email">
-          <ul class="list-unstyled">
-            <li>
-              <script type="text/javascript">
-                emailE = 'realbadradio.com'
-                emailE = ('contact' + '@' + emailE)
-                document.write('<a href="mailto:' + emailE + '"' + ' class="footerfont"><i class="far fa-envelope"></i></a>')
-              </script>
-              <noscript class="footerfont">
-                Email address protected by JavaScript
-              </noscript>
-            </li>
-          </ul>
-      </div>
-    <div class="lamix">
-      <ul class="list-unstyled">
-        <li>
-          <a href="https://lamixtape.fr" target="_blank">
-          <img class="k7" src="img/k7.webp">
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="track">
-      <a id="discogs-link" target="_blank" href="discogslink">
-        <i class="fas fa-music"></i><span id="track-title" class="currenttrack footerfont"></span>
-      </a>
-    </div>
-    </div>
-  </div>
-</footer>
-</body>
+    </footer>
+  </body>
 </html>
