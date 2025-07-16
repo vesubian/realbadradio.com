@@ -19,8 +19,8 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script>!window.jQuery && document.write('<script src="js/jquery.min.js"><\/script>')</script>
-    <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
     <script type="text/javascript" src="js/radiotitle.js"></script>
+    <script type="text/javascript" src="js/audio-player.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     
     <script type="text/javascript">
@@ -37,32 +37,6 @@
         }
         $('#footer').removeClass('invisible');
       }, 0);
-    });
-    </script>
-    
-    <script type="text/javascript">
-    $(document).ready(function(){
-      const stream = {
-        mp3: 'https://stream.realbadradio.com/mpd.mp3'
-      };
-      let ready = false;
-      $("#jquery_jplayer_1").jPlayer({
-        ready: function () {
-          ready = true;
-          $(this).jPlayer("setMedia", stream);
-        },
-        pause: function() {
-          $(this).jPlayer("clearMedia");
-        },
-        error: function(event) {
-          if(ready && event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
-            $(this).jPlayer("setMedia", stream).jPlayer("play");
-          }
-        },
-        keyEnabled: true,
-        preload: 'none',
-        swfPath: "/js"
-      });
     });
     </script>
     
@@ -122,16 +96,13 @@
             </div>
             <img class="img-fluid invisible" src="img/real-bad-radio.webp" alt="Real Bad Radio Logo" />
             <div id="player">
-              <div id="jquery_jplayer_1" class="jp-jplayer"></div>
-              <div id="jp_container_1" role="application" aria-label="media player">
-                <div class="text-center">
-                  <a class="btn jp-play" role="button" tabindex="0" href="#" aria-label="Play">
-                    <i class="bi bi-play-fill"></i> Play
-                  </a>
-                  <a class="btn jp-pause" role="button" tabindex="0" href="#" aria-label="Pause">
-                    <i class="bi bi-pause-fill"></i> Pause
-                  </a>
-                </div>
+              <div class="text-center">
+                <a class="btn" id="play-btn" role="button" tabindex="0" href="#" aria-label="Play">
+                  <i class="bi bi-play-fill"></i> Play
+                </a>
+                <a class="btn" id="pause-btn" role="button" tabindex="0" href="#" aria-label="Pause" style="display: none;">
+                  <i class="bi bi-pause-fill"></i> Pause
+                </a>
               </div>
             </div>
           </div>

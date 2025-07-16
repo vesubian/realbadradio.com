@@ -13,16 +13,19 @@ img {
 }
 
 /* Player Controls */
-section .jp-state-playing .jp-play {
-  display: none;
+#play-btn, #pause-btn {
+  transition: all 0.2s ease;
 }
 
-section .jp-pause {
-  display: none;
+#play-btn:hover, #pause-btn:hover {
+  background: #222;
+  color: #fff;
+  transform: translateY(-1px);
 }
 
-section .jp-state-playing .jp-pause {
-  display: inline-block;
+#play-btn:focus, #pause-btn:focus {
+  outline: 2px solid #222;
+  outline-offset: 2px;
 }
 
 /* Links */
