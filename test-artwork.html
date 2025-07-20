@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artwork Fetcher Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .artwork-display {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .artwork-display img {
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Artwork Fetcher Test</h1>
+        
+        <div>
+            <button onclick="testArtwork()">Test Artwork Generation</button>
+            <button onclick="clearLog()">Clear Log</button>
+        </div>
+        
+        <div class="artwork-display" id="artwork-display">
+            <p>Click "Test Artwork Generation" to see the artwork</p>
+        </div>
+        
+        <div class="log" id="log"></div>
+    </div>
+
+    <script src="js/artwork-fetcher.js"></script>
+    <script>
+        let artworkFetcher;
+        
+        function log(message) {
+            const logDiv = document.getElementById('log');
+            const timestamp = new Date().toLocaleTimeString();
+            logDiv.innerHTML += `[${timestamp}] ${message}\n`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+            console.log(message);
+        }
+        
+        function clearLog() {
+            document.getElementById('log').innerHTML = '';
+        }
+        
+        async function testArtwork() {
+            log('Starting artwork test...');
+            
+            if (!artworkFetcher) {
+                log('Initializing ArtworkFetcher...');
+                artworkFetcher = new ArtworkFetcher();
+            }
+            
+            const testTrack = {
+                artist: 'Test Artist',
+                title: 'Test Song'
+            };
+            
+            log(`Testing with track: ${testTrack.artist} - ${testTrack.title}`);
+            
+            try {
+                const artworkUrl = await artworkFetcher.fetchArtwork(testTrack);
+                log(`Artwork URL received: ${artworkUrl ? 'Yes' : 'No'}`);
+                
+                if (artworkUrl) {
+                    log(`Artwork URL length: ${artworkUrl.length}`);
+                    log(`Artwork URL starts with: ${artworkUrl.substring(0, 50)}...`);
+                    
+                    const display = document.getElementById('artwork-display');
+                    display.innerHTML = `
+                        <h3>Generated Artwork</h3>
+                        <img src="${artworkUrl}" alt="Test Artwork" onload="log('Image loaded successfully')" onerror="log('Image failed to load')" />
+                        <p><strong>Artist:</strong> ${testTrack.artist}</p>
+                        <p><strong>Title:</strong> ${testTrack.title}</p>
+                    `;
+                    log('Artwork displayed');
+                } else {
+                    log('No artwork URL received');
+                }
+            } catch (error) {
+                log(`Error: ${error.message}`);
+                console.error(error);
+            }
+        }
+        
+        // Auto-test on page load
+        window.addEventListener('load', () => {
+            log('Page loaded, ready for testing');
+        });
+    </script>
+</body>
+</html> 

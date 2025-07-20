@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TMHR5PL');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Real Bad Radio - Keep it locked">
+    <meta name="author" content="Real Bad Radio">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    
+    <style>
+      /* Simple styles without animations or transforms */
+      body {
+        padding-top: 8vh;
+        height: 100%;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      
+      img {
+        padding-bottom: 5vh;
+      }
+      
+      .btn {
+        width: 115px;
+        color: #222;
+        border: solid #222 2px;
+        border-radius: 0;
+        font-weight: bold;
+        padding: 5px 20px;
+        margin-bottom: 15px;
+        background: transparent;
+        text-decoration: none;
+        display: inline-block;
+      }
+      
+      .btn:hover {
+        background: #222;
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      .btn:focus {
+        outline: 2px solid #222;
+        outline-offset: 2px;
+      }
+      
+      #player {
+        padding: 4vh 0 4vh;
+      }
+      
+      .container {
+        margin-top: 9px;
+        max-width: 90%;
+      }
+      
+      .img-fluid {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+        height: auto !important;
+        max-width: 82% !important;
+        min-width: 200px;
+      }
+      
+      .footerfont {
+        font-size: 0.9rem;
+        color: #686464 !important;
+        padding-left: 22px;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      
+      .currenttrack {
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+        text-align: center;
+        color: #686464;
+        padding-left: 16px;
+      }
+      
+      .vlcicon {
+        padding-bottom: 1vh;
+        width: 18px;
+      }
+      
+      .k7 {
+        width: 19px;
+        padding: 0px 0px 5px;
+        margin-right: 4px;
+      }
+      
+      .far, .fas {
+        font-size: 1.1rem;
+      }
+      
+      .row {
+        margin: 9px 0 0 0;
+        width: 100%;
+      }
+      
+      .col-md-8 {
+        margin-bottom: unset !important;
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        position: relative;
+        text-align: left;
+      }
+      
+      .col-md-8:hover {
+        overflow: visible;
+      }
+      
+      .openinplayer, .lamix, .email {
+        display: inline-block;
+        padding: 2px;
+      }
+      
+      .track {
+        padding-left: 22px;
+        display: inline-block;
+      }
+      
+      .lamix {
+        padding-left: 24px !important;
+      }
+      
+      #footer {
+        position: relative;
+        height: 46px;
+        padding: 2px;
+      }
+      
+      @media only screen and (max-width: 767px) {
+        .col-md-4 {
+          display: none;
+        }
+        
+        .container {
+          max-width: 95%;
+        }
+        
+        .btn {
+          width: 100px;
+          padding: 4px 15px;
+          font-size: 0.9rem;
+        }
+      }
+      
+      @media only screen and (max-width: 430px) {
+        .openinplayer, .lamix, .email {
+          display: none;
+        }
+        
+        .track {
+          padding-left: 10px;
+        }
+        
+        .footerfont {
+          padding-left: 10px;
+          font-size: 0.8rem;
+        }
+      }
+      
+      /* Enhanced Track Information */
+      .enhanced-track-info {
+        margin-top: 10px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid #222;
+        max-width: 400px;
+        font-size: 0.9rem;
+      }
+      
+      .track-artist {
+        font-weight: bold;
+        color: #222;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+      }
+      
+      .track-title-enhanced {
+        font-size: 1rem;
+        color: #444;
+        margin-bottom: 8px;
+      }
+      
+      .track-links {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      
+      .track-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 10px;
+        background: #f5f5f5;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #333;
+        font-size: 0.8rem;
+        transition: background-color 0.2s ease;
+      }
+      
+      .track-link:hover {
+        background: #e0e0e0;
+        text-decoration: none;
+        color: #333;
+      }
+      
+      .discogs-link {
+        border-left: 3px solid #ff6600;
+      }
+      
+      .lastfm-link {
+        border-left: 3px solid #d51007;
+      }
+      
+      /* Right-side Track Info Panel */
+      .track-info-panel {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 320px;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+      
+      .track-info-panel:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
+      
+      .track-info-content {
+        padding: 20px;
+      }
+      
+      .track-artwork-container {
+        text-align: center;
+        margin-bottom: 15px;
+      }
+      
+      .track-artwork-placeholder {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+      
+      .track-artwork-image {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+      
+      .track-artwork-image:hover {
+        transform: scale(1.05);
+      }
+      
+      .track-details {
+        text-align: center;
+      }
+      
+      .track-title-main {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #222;
+        margin-bottom: 8px;
+        line-height: 1.3;
+        word-wrap: break-word;
+      }
+      
+      .track-artist-main {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 15px;
+        font-style: italic;
+      }
+      
+      .track-links-container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .track-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 15px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 6px;
+        text-decoration: none;
+        color: #333;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      
+      .track-link:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-1px);
+        text-decoration: none;
+        color: #333;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      .discogs-link {
+        border-left: 4px solid #ff6600;
+      }
+      
+      .lastfm-link {
+        border-left: 4px solid #d51007;
+      }
+      
+      @media only screen and (max-width: 768px) {
+        .track-info-panel {
+          position: fixed;
+          top: auto;
+          bottom: 20px;
+          right: 20px;
+          left: 20px;
+          width: auto;
+          max-width: 400px;
+          margin: 0 auto;
+        }
+        
+        .track-artwork-placeholder,
+        .track-artwork-image {
+          width: 150px;
+          height: 150px;
+        }
+      }
+      
+      @media only screen and (max-width: 480px) {
+        .track-info-panel {
+          bottom: 10px;
+          right: 10px;
+          left: 10px;
+        }
+        
+        .track-info-content {
+          padding: 15px;
+        }
+        
+        .track-artwork-placeholder,
+        .track-artwork-image {
+          width: 120px;
+          height: 120px;
+        }
+        
+        .track-title-main {
+          font-size: 1rem;
+        }
+        
+        .track-artist-main {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>!window.jQuery && document.write('<script src="js/jquery.min.js"><\/script>')</script>
+    <script type="text/javascript" src="js/artwork-fetcher.js"></script>
+    <script type="text/javascript" src="js/track-info-enhanced.js"></script>
+    <script type="text/javascript" src="js/audio-player.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+    $(document).ready(function() {
+      setInterval(function() {
+        var docHeight = $(window).height();
+        var footerHeight = $('#footer').outerHeight();
+        var footerTop = $('#footer').position().top + footerHeight;
+        var marginTop = (docHeight - footerTop);
+        if (footerTop < docHeight) {
+          $('#footer').css('margin-top', marginTop + 'px');
+        } else {
+          $('#footer').css('margin-top', '0px');
+        }
+        $('#footer').removeClass('invisible');
+      }, 0);
+    });
+    </script>
+    
+    <title>Real Bad Radio</title>
+    <meta name="title" content="Keep it locked">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://realbadradio.com">
+    <meta property="og:title" content="Real Bad Radio">
+    <meta property="og:description" content="Keep it locked">
+    <meta property="og:image" content="https://realbadradio.com/img/real-bad-radio.webp">
+    <meta property="og:site_name" content="Real Bad Radio">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Real Bad Radio">
+    <meta name="twitter:description" content="Keep it locked">
+    <meta name="twitter:image" content="https://realbadradio.com/img/real-bad-radio.webp">
+
+    <!-- Favicon and App Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.webp">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/apple-icon-60x60.webp">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.webp">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon-76x76.webp">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.webp">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/apple-icon-120x120.webp">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.webp">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.webp">
+    <link rel="icon" type="image/webp" sizes="192x192" href="img/android-icon-192x192.webp">
+    <link rel="icon" type="image/webp" sizes="32x32" href="img/favicon-32x32.webp">
+    <link rel="icon" type="image/webp" sizes="96x96" href="img/favicon-96x96.webp">
+    <link rel="icon" type="image/webp" sizes="16x16" href="img/favicon-16x16.webp">
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="img/ms-icon-144x144.webp">
+    <meta name="theme-color" content="#ffffff">
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMHR5PL"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <main>
+      <section class="container">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <!-- Simple static logo without animation -->
+            <div style="text-align: center; margin-bottom: 20px;">
+              <img class="img-fluid" src="img/real-bad-radio.webp" alt="Real Bad Radio Logo" />
+            </div>
+            
+            <div id="player">
+              <div class="text-center">
+                <a class="btn" id="play-btn" role="button" tabindex="0" href="#" aria-label="Play">
+                  <i class="bi bi-play-fill"></i> Play
+                </a>
+                <a class="btn" id="pause-btn" role="button" tabindex="0" href="#" aria-label="Pause" style="display: none;">
+                  <i class="bi bi-pause-fill"></i> Pause
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="text-center text-lg-start invisible" id="footer">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="openinplayer">
+            <a href="https://stream.realbadradio.com/mpd.mp3.m3u" class="footerfont" aria-label="Open in external player">
+              <img class="vlcicon" src="img/vlc.webp" alt="VLC Icon">
+            </a>
+          </div>
+          <div class="email">
+            <ul class="list-unstyled">
+              <li>
+                <script type="text/javascript">
+                  emailE = 'realbadradio.com'
+                  emailE = ('contact' + '@' + emailE)
+                  document.write('<a href="mailto:' + emailE + '"' + ' class="footerfont" aria-label="Contact us"><i class="far fa-envelope"></i></a>')
+                </script>
+                <noscript class="footerfont">
+                  Email address protected by JavaScript
+                </noscript>
+              </li>
+            </ul>
+          </div>
+          <div class="lamix">
+            <ul class="list-unstyled">
+              <li>
+                <a href="https://lamixtape.fr" target="_blank" rel="noopener noreferrer" aria-label="Visit Lamixtape">
+                  <img class="k7" src="img/k7.webp" alt="K7 Icon">
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="track">
+            <a id="discogs-link" target="_blank" href="discogslink" rel="noopener noreferrer" aria-label="View on Discogs">
+              <i class="fas fa-music"></i><span id="track-title" class="currenttrack footerfont">Real Bad Radio</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Keyboard Shortcuts Help -->
+    <div class="keyboard-shortcuts" id="keyboard-shortcuts" style="position: fixed; bottom: 20px; left: 20px; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px 15px; border-radius: 5px; font-size: 0.8rem; z-index: 1000; opacity: 0; transition: opacity 0.3s ease;">
+      <div class="shortcut" style="margin: 2px 0;"><span class="key" style="background: #333; padding: 2px 6px; border-radius: 3px; font-family: monospace; margin-right: 5px;">P</span> Play/Pause</div>
+      <div class="shortcut" style="margin: 2px 0;"><span class="key" style="background: #333; padding: 2px 6px; border-radius: 3px; font-family: monospace; margin-right: 5px;">M</span> Mute/Unmute</div>
+      <div class="shortcut" style="margin: 2px 0;"><span class="key" style="background: #333; padding: 2px 6px; border-radius: 3px; font-family: monospace; margin-right: 5px;">S</span> Stop</div>
+      <div class="shortcut" style="margin: 2px 0;"><span class="key" style="background: #333; padding: 2px 6px; border-radius: 3px; font-family: monospace; margin-right: 5px;">Space</span> Play/Pause</div>
+      <div class="shortcut" style="margin: 2px 0;"><span class="key" style="background: #333; padding: 2px 6px; border-radius: 3px; font-family: monospace; margin-right: 5px;">?</span> Toggle Help</div>
+    </div>
+    
+    <script>
+      // Show keyboard shortcuts help
+      let shortcutsVisible = false;
+      
+      document.addEventListener('keydown', function(e) {
+        if (e.key === '?') {
+          e.preventDefault();
+          const shortcuts = document.getElementById('keyboard-shortcuts');
+          shortcutsVisible = !shortcutsVisible;
+          shortcuts.style.opacity = shortcutsVisible ? '1' : '0';
+        }
+      });
+      
+      // Hide shortcuts after 5 seconds of inactivity
+      let shortcutsTimeout;
+      document.addEventListener('keydown', function() {
+        if (shortcutsVisible) {
+          clearTimeout(shortcutsTimeout);
+          shortcutsTimeout = setTimeout(() => {
+            shortcutsVisible = false;
+            document.getElementById('keyboard-shortcuts').style.opacity = '0';
+          }, 5000);
+        }
+      });
+    </script>
+  </body>
+</html> 

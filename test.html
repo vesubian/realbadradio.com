@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Real Bad Radio - Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .warning { background: #fff3cd; color: #856404; }
+        .error { background: #f8d7da; color: #721c24; }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: 2px solid #333;
+            background: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Real Bad Radio - WebGL Test</h1>
+        
+        <div id="status" class="status">
+            <h3>System Status</h3>
+            <div id="webgl-status">Checking WebGL support...</div>
+            <div id="gpu-status">Checking GPU acceleration...</div>
+            <div id="audio-status">Checking audio support...</div>
+        </div>
+        
+        <div class="status success">
+            <h3>Test Results</h3>
+            <p>If you can see this page without WebGL errors, the fix is working!</p>
+        </div>
+        
+        <div>
+            <button onclick="testAudio()">Test Audio Player</button>
+            <button onclick="testAnimations()">Test Animations</button>
+            <button onclick="location.href='index.html'">Go to Main Site</button>
+        </div>
+        
+        <div id="console-output" style="text-align: left; margin-top: 20px; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+            <h4>Console Output:</h4>
+            <div id="console-log"></div>
+        </div>
+    </div>
+
+    <script>
+        // Capture console output
+        const originalLog = console.log;
+        const originalWarn = console.warn;
+        const originalError = console.error;
+        
+        function addToConsole(type, message) {
+            const logDiv = document.getElementById('console-log');
+            const timestamp = new Date().toLocaleTimeString();
+            logDiv.innerHTML += `<div style="color: ${type === 'error' ? 'red' : type === 'warn' ? 'orange' : 'black'}">[${timestamp}] ${message}</div>`;
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addToConsole('log', args.join(' '));
+        };
+        
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            addToConsole('warn', args.join(' '));
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addToConsole('error', args.join(' '));
+        };
+        
+        // Test functions
+        function testWebGL() {
+            const canvas = document.createElement('canvas');
+            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+            
+            if (gl) {
+                document.getElementById('webgl-status').innerHTML = 
+                    `<span style="color: green;">✓ WebGL Supported</span> - ${gl.getParameter(gl.VERSION)}`;
+                return true;
+            } else {
+                document.getElementById('webgl-status').innerHTML = 
+                    '<span style="color: red;">✗ WebGL Not Supported</span>';
+                return false;
+            }
+        }
+        
+        function testGPU() {
+            const canvas = document.createElement('canvas');
+            const gl = canvas.getContext('webgl');
+            
+            if (gl) {
+                const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                if (debugInfo) {
+                    const gpu = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                    document.getElementById('gpu-status').innerHTML = 
+                        `<span style="color: green;">✓ GPU Detected</span> - ${gpu}`;
+                } else {
+                    document.getElementById('gpu-status').innerHTML = 
+                        '<span style="color: orange;">⚠ GPU Info Limited</span>';
+                }
+            }
+        }
+        
+        function testAudio() {
+            try {
+                const audio = new Audio();
+                if (audio.canPlayType) {
+                    document.getElementById('audio-status').innerHTML = 
+                        '<span style="color: green;">✓ Audio Supported</span>';
+                } else {
+                    document.getElementById('audio-status').innerHTML = 
+                        '<span style="color: red;">✗ Audio Not Supported</span>';
+                }
+            } catch (e) {
+                document.getElementById('audio-status').innerHTML = 
+                    '<span style="color: red;">✗ Audio Error</span>';
+            }
+        }
+        
+        function testAnimations() {
+            const testDiv = document.createElement('div');
+            testDiv.style.cssText = `
+                width: 100px;
+                height: 100px;
+                background: red;
+                animation: test 2s infinite;
+                transform: translateZ(0);
+            `;
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes test {
+                    0% { background: red; }
+                    50% { background: blue; }
+                    100% { background: red; }
+                }
+            `;
+            
+            document.head.appendChild(style);
+            document.body.appendChild(testDiv);
+            
+            setTimeout(() => {
+                document.body.removeChild(testDiv);
+                document.head.removeChild(style);
+                console.log('Animation test completed');
+            }, 3000);
+        }
+        
+        // Run tests on load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Starting WebGL test...');
+            testWebGL();
+            testGPU();
+            testAudio();
+        });
+    </script>
+</body>
+</html> 
