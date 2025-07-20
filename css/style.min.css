@@ -654,3 +654,17 @@ button:focus,
 .footerfont {
   user-select: none;
 }
+
+/* Override for logo alternation */
+#cf img.img-fluid {
+  max-width: none !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+}
+#cf img.bottom {
+  z-index: 1 !important;
+}
+#cf img.top {
+  z-index: 2 !important;
+}

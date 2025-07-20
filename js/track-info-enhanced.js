@@ -346,8 +346,6 @@ class EnhancedTrackInfo {
   }
 
   async updateReleaseLink(cleanTitle, linkEl) {
-<<<<<<< HEAD
-=======
     // 1. Try Bandcamp first (temporary priority)
     const bc = await this.getBandcampLink(cleanTitle);
     if (bc) {
@@ -355,7 +353,6 @@ class EnhancedTrackInfo {
       return;
     }
     /* Discogs lookup temporarily disabled for testing
->>>>>>> 7dd51a1 ( On branch main)
     try {
       const token = window.artworkFetcher ? window.artworkFetcher.discogsKey : null;
       if (token) {
@@ -368,47 +365,6 @@ class EnhancedTrackInfo {
             if (!uri && data.results[0].resource_url) {
               uri = data.results[0].resource_url.replace('https://api.discogs.com/releases/','https://www.discogs.com/release/');
             }
-<<<<<<< HEAD
-            if (!uri) return;
-            if (!/^https?:\/\//i.test(uri)) {
-              if (!uri.startsWith('/')) uri = '/' + uri;
-              uri = 'https://www.discogs.com' + uri;
-            }
-            linkEl.href = uri;
-            return; // success
-          }
-        }
-      }
-    } catch(e){/* continue to bandcamp */}
-    // Try to fetch a Bandcamp release/track link
-    const bc = await this.getBandcampLink(cleanTitle);
-    if (bc) {
-      linkEl.href = bc;
-    } else {
-      // fallback to Bandcamp search
-      linkEl.href = `https://bandcamp.com/search?q=${encodeURIComponent(cleanTitle)}`;
-    }
-  }
-
-  async getBandcampLink(query) {
-    try {
-      const ddgUrl = `https://duckduckgo.com/html/?q=${encodeURIComponent(query + ' site:bandcamp.com')}`;
-      const proxy = `https://api.allorigins.win/get?url=${encodeURIComponent(ddgUrl)}`;
-      const resp = await fetch(proxy);
-      if (!resp.ok) return null;
-      const data = await resp.json();
-      const html = data.contents;
-      const match = html.match(/<a[^>]+href="(https?:\/\/[^\"]*bandcamp\.com[^\"]+)"/i);
-      if (match && match[1]) {
-        let url = match[1];
-        // Unescape HTML entities
-        url = url.replace(/&amp;/g, '&');
-        return url;
-      }
-      return null;
-    } catch(e){ return null; }
-  }
-=======
             if (uri) {
               if (!/^https?:\/\//i.test(uri)) {
                 if (!uri.startsWith('/')) uri = '/' + uri;
@@ -455,7 +411,6 @@ class EnhancedTrackInfo {
        return m ? m[0] : null;
      }catch(e){return null;}
    }
->>>>>>> 7dd51a1 ( On branch main)
   
   displayEnhancedInfo(trackInfo) {
     // No longer update Discogs/Last.fm icons here
