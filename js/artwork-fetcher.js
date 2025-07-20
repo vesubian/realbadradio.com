@@ -5,6 +5,10 @@ class ArtworkFetcher {
     // Insert your API keys below if you have them
     this.discogsKey = 'UFDjNqcnpwTNEbDcSZPVWYqaZxmewDDgqvtGNsfX';
     this.discogsSecret = '';
+<<<<<<< HEAD
+=======
+    this.disableDiscogs = true; // TEMP disable discogs source
+>>>>>>> 7dd51a1 ( On branch main)
     this.lastfmApiKey = '15a10b6514ed3a9147ae2cfa6e582845';
     // Google Custom Search API is not included for privacy and quota reasons
   }
@@ -18,8 +22,15 @@ class ArtworkFetcher {
     let url = null;
     url = await this.fetchFromMusicBrainz(trackInfo);
     if (url) { console.log('ArtworkFetcher: Got artwork from MusicBrainz:', url); this.cache.set(cacheKey, url); return url; }
+<<<<<<< HEAD
     url = await this.fetchFromDiscogs(trackInfo);
     if (url) { console.log('ArtworkFetcher: Got artwork from Discogs:', url); this.cache.set(cacheKey, url); return url; }
+=======
+    if (!this.disableDiscogs) {
+      url = await this.fetchFromDiscogs(trackInfo);
+      if (url) { console.log('ArtworkFetcher: Got artwork from Discogs:', url); this.cache.set(cacheKey, url); return url; }
+    }
+>>>>>>> 7dd51a1 ( On branch main)
     url = await this.fetchFromLastFM(trackInfo);
     if (url) { console.log('ArtworkFetcher: Got artwork from Last.fm:', url); this.cache.set(cacheKey, url); return url; }
     url = await this.fetchFromGoogleImages(trackInfo);

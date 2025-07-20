@@ -346,6 +346,16 @@ class EnhancedTrackInfo {
   }
 
   async updateReleaseLink(cleanTitle, linkEl) {
+<<<<<<< HEAD
+=======
+    // 1. Try Bandcamp first (temporary priority)
+    const bc = await this.getBandcampLink(cleanTitle);
+    if (bc) {
+      linkEl.href = bc;
+      return;
+    }
+    /* Discogs lookup temporarily disabled for testing
+>>>>>>> 7dd51a1 ( On branch main)
     try {
       const token = window.artworkFetcher ? window.artworkFetcher.discogsKey : null;
       if (token) {
@@ -358,6 +368,7 @@ class EnhancedTrackInfo {
             if (!uri && data.results[0].resource_url) {
               uri = data.results[0].resource_url.replace('https://api.discogs.com/releases/','https://www.discogs.com/release/');
             }
+<<<<<<< HEAD
             if (!uri) return;
             if (!/^https?:\/\//i.test(uri)) {
               if (!uri.startsWith('/')) uri = '/' + uri;
@@ -397,6 +408,54 @@ class EnhancedTrackInfo {
       return null;
     } catch(e){ return null; }
   }
+=======
+            if (uri) {
+              if (!/^https?:\/\//i.test(uri)) {
+                if (!uri.startsWith('/')) uri = '/' + uri;
+                uri = 'https://www.discogs.com' + uri;
+              }
+              linkEl.href = uri;
+              return;
+            }
+          }
+        }
+      }
+    } catch(e){ }
+    */
+    // 3. Ultimate fallback: Bandcamp search
+    linkEl.href = `https://bandcamp.com/search?q=${encodeURIComponent(cleanTitle)}`;
+  }
+
+  async getBandcampLink (query) {
+    // --- Bandcamp search page ---
+    try {
+      const bcSearch = 'https://bandcamp.com/search'
+                     + '?item_type=t&q=' + encodeURIComponent(query);
+      const proxy    = 'https://api.allorigins.win/get?url=' + encodeURIComponent(bcSearch);
+
+      const r = await fetch(proxy);
+      if (!r.ok) throw new Error();
+      const html = (await r.json()).contents;
+      const m    = html.match(/<a[^>]+class="itemurl"[^>]+href="([^"]+)"/i);
+      if (m) return m[1];
+    } catch { /* ignore */ }
+
+    // --- fallback generic search link ---
+    return null;
+  }
+
+  async scrapeDuckDuckGo(query){
+     try {
+       const ddgUrl = `https://duckduckgo.com/html/?q=${encodeURIComponent(query + ' site:bandcamp.com')}`;
+       const resp = await fetch(`https://r.jina.ai/http://textise dot iitty?url=${encodeURIComponent(ddgUrl)}`);
+       if(!resp.ok) return null;
+       const text = await resp.text();
+       const regex = /https?:\/\/[^"'\s>]*bandcamp\.com\/(?:track|album)\/[^"'\s<>]+/i;
+       const m = text.match(regex);
+       return m ? m[0] : null;
+     }catch(e){return null;}
+   }
+>>>>>>> 7dd51a1 ( On branch main)
   
   displayEnhancedInfo(trackInfo) {
     // No longer update Discogs/Last.fm icons here
