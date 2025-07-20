@@ -13,14 +13,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Real Bad Radio - Keep it locked">
     <meta name="author" content="Real Bad Radio">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
 
     <link rel="stylesheet" href="css/style.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     
+    <script type="text/javascript" src="js/webgl-fix.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script>!window.jQuery && document.write('<script src="js/jquery.min.js"><\/script>')</script>
-    <script type="text/javascript" src="js/radiotitle.js"></script>
+    <script type="text/javascript" src="js/artwork-fetcher.js"></script>
+    <script type="text/javascript" src="js/track-info-enhanced.js"></script>
     <script type="text/javascript" src="js/audio-player.js"></script>
+    <script type="text/javascript" src="js/debug.js"></script>
+    
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     
     <script type="text/javascript">
@@ -75,9 +81,11 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="img/ms-icon-144x144.webp">
     <meta name="theme-color" content="#ffffff">
+    <script src="https://unpkg.com/colorthief@2.3.2/dist/color-thief.umd.js"></script>
   </head>
 
   <body>
+    <div id="bg-tint"></div>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMHR5PL"
@@ -91,8 +99,8 @@
           <div class="col-md-3"></div>
           <div class="col-md-6">
             <div id="cf">
-              <img class="bottom img-fluid" src="img/real-bad-radio-2.webp" alt="Real Bad Radio Logo" />
-              <img class="top img-fluid" src="img/real-bad-radio.webp" alt="Real Bad Radio Logo" />
+              <img class="bottom img-fluid" src="img/real-bad-radio-2-transparent.png" alt="Real Bad Radio Logo" />
+              <img class="top img-fluid" src="img/real-bad-radio-2-transparent-2.png" alt="Real Bad Radio Logo" />
             </div>
             <img class="img-fluid invisible" src="img/real-bad-radio.webp" alt="Real Bad Radio Logo" />
             <div id="player">
@@ -145,11 +153,126 @@
           </div>
           <div class="track">
             <a id="discogs-link" target="_blank" href="discogslink" rel="noopener noreferrer" aria-label="View on Discogs">
-              <i class="fas fa-music"></i><span id="track-title" class="currenttrack footerfont"></span>
+              <i class="fas fa-music"></i><span id="track-title" class="currenttrack footerfont">Real Bad Radio</span>
             </a>
           </div>
         </div>
       </div>
     </footer>
+    
+    <!-- Keyboard Shortcuts Help -->
+    <div class="keyboard-shortcuts" id="keyboard-shortcuts">
+      <div class="shortcut"><span class="key">P</span> Play/Pause</div>
+      <div class="shortcut"><span class="key">M</span> Mute/Unmute</div>
+      <div class="shortcut"><span class="key">S</span> Stop</div>
+      <div class="shortcut"><span class="key">+</span> Volume Up</div>
+      <div class="shortcut"><span class="key">-</span> Volume Down</div>
+      <div class="shortcut"><span class="key">Space</span> Play/Pause</div>
+      <div class="shortcut"><span class="key">?</span> Toggle Help</div>
+    </div>
+    
+    <script>
+      // Show keyboard shortcuts help
+      let shortcutsVisible = false;
+      
+      document.addEventListener('keydown', function(e) {
+        if (e.key === '?') {
+          e.preventDefault();
+          const shortcuts = document.getElementById('keyboard-shortcuts');
+          shortcutsVisible = !shortcutsVisible;
+          shortcuts.classList.toggle('show', shortcutsVisible);
+        }
+      });
+      
+      // Hide shortcuts after 5 seconds of inactivity
+      let shortcutsTimeout;
+      document.addEventListener('keydown', function() {
+        if (shortcutsVisible) {
+          clearTimeout(shortcutsTimeout);
+          shortcutsTimeout = setTimeout(() => {
+            shortcutsVisible = false;
+            document.getElementById('keyboard-shortcuts').classList.remove('show');
+          }, 5000);
+        }
+      });
+    </script>
+    <script>
+(function() {
+  console.log('[BG-TINT] Script running');
+  var bg = document.getElementById('bg-tint');
+  if (!bg) {
+    console.warn('[BG-TINT] No #bg-tint overlay found');
+    return;
+  }
+  function setFallbackColor() {
+    var fallback = 'rgba(200,200,255,0.25)';
+    bg.style.background = fallback;
+    console.log('[BG-TINT] Set fallback bg-tint to', fallback);
+  }
+  function extractColorFromImg(img) {
+    try {
+      if (typeof window.ColorThief !== 'function') {
+        console.error('[BG-TINT] ColorThief is not available!');
+        setFallbackColor();
+        return;
+      }
+      var colorThief = new window.ColorThief();
+      var rgb = colorThief.getColor(img);
+      var color = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},0.18)`;
+      bg.style.background = color;
+      console.log('[BG-TINT] Set bg-tint to', color);
+    } catch (e) {
+      console.error('[BG-TINT] Error extracting color:', e);
+      setFallbackColor();
+    }
+  }
+  function setBgFromArtwork() {
+    var img = document.querySelector('.track-artwork-image.minimal');
+    if (!img) {
+      console.warn('[BG-TINT] No .track-artwork-image.minimal found');
+      setFallbackColor();
+      return;
+    }
+    if (img.complete && img.naturalHeight !== 0) {
+      console.log('[BG-TINT] Artwork loaded, extracting color...');
+      extractColorFromImg(img);
+    } else {
+      console.warn('[BG-TINT] Artwork not loaded, waiting for load event');
+      img.addEventListener('load', function onLoad() {
+        img.removeEventListener('load', onLoad);
+        console.log('[BG-TINT] Artwork load event fired, extracting color...');
+        extractColorFromImg(img);
+      });
+      setFallbackColor();
+    }
+  }
+  // Initial run
+  setBgFromArtwork();
+  // Observe changes to the artwork image src
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'src') {
+        console.log('[BG-TINT] Artwork src changed, re-extracting color');
+        setBgFromArtwork();
+      }
+    });
+  });
+  function observeArtwork() {
+    var img = document.querySelector('.track-artwork-image.minimal');
+    if (img) {
+      observer.disconnect();
+      observer.observe(img, { attributes: true, attributeFilter: ['src'] });
+    }
+  }
+  // Observe DOM changes to re-attach observer if artwork element is replaced
+  var domObserver = new MutationObserver(function() {
+    observeArtwork();
+    setBgFromArtwork();
+  });
+  domObserver.observe(document.body, { childList: true, subtree: true });
+  // Initial observer setup
+  observeArtwork();
+})();
+    </script>
   </body>
 </html>
