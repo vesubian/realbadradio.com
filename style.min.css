@@ -1,0 +1,670 @@
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
+
+/* Base Styles */
+body {
+  padding-top: 8vh;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: background 0.8s cubic-bezier(.4,2,.6,1);
+}
+#bg-tint {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background: rgba(200,200,255,0.25); /* fallback color, more visible */
+  transition: background 0.8s cubic-bezier(.4,2,.6,1);
+  filter: blur(32px);
+}
+
+img {
+  padding-bottom: 5vh;
+}
+
+/* Player Controls */
+#play-btn, #pause-btn {
+  transition: all 0.2s ease;
+}
+
+#play-btn:hover, #pause-btn:hover {
+  background: #222;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+#play-btn:focus, #pause-btn:focus {
+  outline: 2px solid #222;
+  outline-offset: 2px;
+}
+
+/* Links */
+a, a:hover {
+  color: unset;
+  text-decoration: none;
+}
+
+ul {
+  margin-bottom: 0px;
+}
+
+#player {
+  padding: 4vh 0 4vh;
+}
+
+/* Footer Elements */
+.email {
+  position: relative;
+  margin-bottom: -6px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+.email ul {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.email li {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.email a {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.vlcicon {
+  padding-bottom: 1vh;
+  width: 18px;
+  transition: transform 0.2s ease;
+}
+
+.lamix {
+  padding-left: 0 !important;
+}
+
+.track {
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.openinplayer, .lamix, .email {
+  display: inline-block;
+  padding: 2px;
+  flex: 0 0 auto;
+}
+
+/* Layout */
+.row {
+  margin: 9px 0 0 0;
+  width: 100%;
+}
+
+.container {
+  margin-top: 9px;
+  max-width: 90%;
+}
+
+/* Buttons */
+.btn {
+  width: 115px;
+  color: #222;
+  border: solid #222 2px;
+  border-radius: 0;
+  font-weight: bold;
+  padding: 5px 20px;
+  margin-bottom: 15px;
+  transition: all 0.2s ease;
+  background: transparent;
+}
+
+.btn:hover {
+  background: #222;
+  color: #fff;
+  /* Disable transform to prevent WebGL issues */
+  /* transform: translateY(-1px) translateZ(0); */
+}
+
+.btn:focus {
+  outline: 2px solid #222;
+  outline-offset: 2px;
+}
+
+/* Track Display */
+.currenttrack {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  text-align: center;
+  color: #686464;
+  padding-left: 16px;
+}
+
+#track-title {
+  flex: 1 1 0;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  direction: ltr;
+  display: block;
+}
+
+/* Minimal Track Info Panel */
+.track-info-panel.minimal {
+  position: fixed;
+  left: 32px;
+  bottom: 60px; /* Slightly lower on screen */
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  z-index: 1002;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+  box-sizing: border-box;
+  overflow: visible;
+  width: auto;
+  max-width: 98vw;
+  margin: 0;
+}
+.track-info-content.minimal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+.track-artwork-container.minimal {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0;
+}
+.track-artwork-image.minimal {
+  display: block;
+  object-fit: cover;
+  border-radius: 4px !important; /* subtle rounding */
+  box-shadow: 0 10px 40px 0 rgba(0,0,0,0.22), 0 4px 16px 0 rgba(0,0,0,0.13);
+  background: none !important;
+  border: none !important;
+  width: 220px;
+  height: 220px;
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
+  overflow: hidden; /* avoids deprecated overflow setting on img */
+  transition: box-shadow 0.3s, border-radius 0.3s;
+  margin: 0;
+  padding: 0;
+}
+@media only screen and (max-width: 900px) {
+  .track-artwork-image.minimal {
+    max-width: 48vw;
+    min-width: 120px;
+    max-height: 48vw;
+    min-height: 120px;
+  }
+  .track-info-panel.minimal {
+    left: 4vw;
+    right: 4vw;
+    bottom: 50px;
+    padding: 4vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .track-artwork-image.minimal {
+    max-width: 80vw;
+    min-width: 80px;
+    max-height: 80vw;
+    min-height: 80px;
+  }
+  .track-info-panel.minimal {
+    left: 2vw;
+    right: 2vw;
+    bottom: 40px;
+    padding: 2vw;
+  }
+}
+@media (max-height: 600px) {
+  .track-artwork-image.minimal {
+    max-width: 32vw;
+    min-width: 60px;
+    max-height: 32vw;
+    min-height: 60px;
+  }
+  .track-info-panel.minimal {
+    bottom: 30px;
+  }
+}
+@media (max-height: 420px) {
+  .track-info-panel.minimal {
+    display: none !important;
+  }
+}
+.track-links-container.minimal {
+  margin-top: 18px;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+.track-link.minimal {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.track-link.minimal:hover {
+  opacity: 1;
+}
+.track-link.minimal svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+  filter: grayscale(1) contrast(1.2);
+}
+@media only screen and (max-width: 600px) {
+  .track-info-panel.minimal {
+    left: 5vw;
+    bottom: 8vw;
+    padding: 4vw;
+  }
+  .track-artwork-image.minimal {
+    max-width: 60vw;
+    max-height: 60vw;
+  }
+  .track-links-container.minimal {
+    gap: 10vw;
+    margin-top: 4vw;
+  }
+  .track-link.minimal svg {
+    width: 9vw;
+    height: 9vw;
+  }
+}
+
+/* Keyboard shortcuts help */
+.keyboard-shortcuts {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  bottom: auto;
+  right: auto;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.keyboard-shortcuts.show {
+  opacity: 1;
+}
+
+.keyboard-shortcuts .shortcut {
+  margin: 2px 0;
+}
+
+.keyboard-shortcuts .key {
+  background: #333;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: monospace;
+  margin-right: 5px;
+}
+
+/* Footer */
+#footer {
+  position: relative;
+  height: 46px;
+  padding: 2px;
+}
+
+.footerfont {
+  font-size: 0.9rem;
+  color: #686464 !important;
+  padding-left: 22px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Footer Column */
+.col-md-8 {
+  margin-bottom: unset !important;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.openinplayer, .lamix, .email {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.track {
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.col-md-8:hover {
+  overflow: visible;
+}
+
+/* Footer Icons */
+.openinplayer img {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.15s ease;
+}
+
+.openinplayer:hover img {
+  transform: scale(1.12);
+}
+
+#discogs-link {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+#discogs-link i, #discogs-link .fas {
+  vertical-align: middle;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+#discogs-link:hover .fas {
+  font-size: 1.2rem !important;
+  margin-right: -1.5px;
+}
+
+.far, .fas {
+  font-size: 1.1rem;
+  transition: transform 0.15s ease;
+  margin: 0;
+}
+
+#discogs-link:hover .fas, .far:hover {
+  transform: scale(1.12);
+}
+
+#discogs-link .fas {
+  margin: 0;
+}
+
+#discogs-link:hover .fas {
+  margin-right: 0;
+}
+
+.k7 {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.15s ease;
+}
+
+.list-unstyled:hover .k7 {
+  transform: scale(1.12);
+}
+
+/* Logo Animation */
+#cf {
+  height: auto;
+  width: auto;
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  /* Force hardware acceleration */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+#cf img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* Optimize for GPU */
+  transform: translateZ(0);
+  will-change: opacity;
+  backface-visibility: hidden;
+  z-index: -1;
+}
+
+@keyframes cf3FadeInOut {
+  0% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+#cf img.top {
+  animation-name: cf3FadeInOut;
+  animation-timing-function: step-end;
+  animation-iteration-count: infinite;
+  animation-duration: 15s;
+  animation-direction: alternate;
+  /* Optimize animation performance */
+  transform: translateZ(0);
+  will-change: opacity;
+  /* Force software rendering for this element */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+}
+
+/* Images */
+.img-fluid {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: auto !important;
+  max-width: 82% !important;
+  min-width: 200px;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 767px) {
+  .col-md-4 {
+    display: none;
+  }
+  
+  .container {
+    max-width: 95%;
+  }
+  
+  .btn {
+    width: 100px;
+    padding: 4px 15px;
+    font-size: 0.9rem;
+  }
+  .col-md-8 {
+    max-width: 100%;
+    width: 100%;
+  }
+  .track {
+    /* no width, keep inline */
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .openinplayer, .lamix, .email {
+    display: none;
+  }
+  
+  .track {
+    padding-left: 10px;
+  }
+  
+  .footerfont {
+    padding-left: 10px;
+    font-size: 0.8rem;
+  }
+}
+
+/* WebGL Error Prevention */
+/* Force software rendering for problematic elements */
+#cf, #cf img, .btn, .openinplayer img, .far, .fas, .k7 {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  /* Disable hardware acceleration for these elements */
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+a:focus,
+button:focus,
+.btn:focus {
+  outline: 2px solid #222;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn {
+    border-width: 3px;
+  }
+  
+  .footerfont {
+    color: #000 !important;
+  }
+}
+
+.track-artwork-image.minimal.mini {
+  max-width: 80px !important;
+  max-height: 80px !important;
+  width: 80px !important;
+  height: 80px !important;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px !important;
+  overflow: hidden;
+}
+
+/* Footer Icon Standardization */
+.vlcicon, .k7, #discogs-link .fas, .email .fa-envelope {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  line-height: 18px;
+}
+
+.vlcicon, .k7 {
+  padding: 0;
+}
+
+#discogs-link .fas, .email .fa-envelope {
+  font-size: 18px !important;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.15s ease;
+}
+
+.openinplayer a, .lamix a, .email a {
+  display: flex;
+  align-items: center;
+}
+
+.email ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.email .fa-envelope {
+  line-height: 18px;
+}
+
+#discogs-link, #discogs-link:focus, #discogs-link:active {
+  outline: none;
+}
+#discogs-link {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.footerfont {
+  user-select: none;
+}
+
+/* Override for logo alternation */
+#cf img.img-fluid {
+  max-width: none !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+}
+#cf img.bottom {
+  z-index: 1 !important;
+}
+#cf img.top {
+  z-index: 2 !important;
+}
